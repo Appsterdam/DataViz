@@ -64,14 +64,10 @@ story?](http://www.denieuwereporter.nl/2010/02/de-database-als-vertelvorm-maar-h
 
 Video:
 
-[Steve
-Keil](http://thenextweb.com/conference/amsterdam/2012/talks/video/LOk_BiLfn2E),
-keynote at Next Web
+[Steve Keil](http://thenextweb.com/conference/amsterdam/2012/talks/video/LOk_BiLfn2E), keynote at Next Web
 
 [Neelie Kroes, Vice President of the EC for the Digital
 Agenda](http://www.youtube.com/watch?v=Aa3YpIztu-g)
-
-[](http://www.youtube.com/watch?v=Aa3YpIztu-g)\
 
 
 **Inspiration and examples**
