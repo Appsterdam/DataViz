@@ -41,7 +41,7 @@ module Openinnodb
     # config.i18n.default_locale = :de
 
     #custome MongoDB logger
-    config.mongoid.logger = Logger.new($stdout, :warn)
+    #config.mongoid.logger = Logger.new($stdout, :warn)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

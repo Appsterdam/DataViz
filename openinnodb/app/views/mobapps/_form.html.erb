@@ -1,0 +1,93 @@
+<%= form_for(@mobapp) do |f| %>
+  <% if @mobapp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mobapp.errors.count, "error") %> prohibited this mobapp from being saved:</h2>
+
+      <ul>
+      <% @mobapp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :creator %><br />
+    <%= f.text_field :creator %>
+  </div>
+  <div class="field">
+    <%= f.label :commissioner %><br />
+    <%= f.text_field :commissioner %>
+  </div>
+  <div class="field">
+    <%= f.label :copyright %><br />
+    <%= f.text_field :copyright %>
+  </div>
+  <div class="field">
+    <%= f.label :appic %><br />
+    <%= f.text_field :appic %>
+  </div>
+  <div class="field">
+    <%= f.label :novel %><br />
+    <%= f.check_box :novel %>
+  </div>
+  <div class="field">
+    <%= f.label :repackaged %><br />
+    <%= f.check_box :repackaged %>
+  </div>
+  <div class="field">
+    <%= f.label :devlanguage %><br />
+    <%= f.text_field :devlanguage %>
+  </div>
+  <div class="field">
+    <%= f.label :platform %><br />
+    <%= f.text_field :platform %>
+  </div>
+  <div class="field">
+    <%= f.label :hardware %><br />
+    <%= f.text_field :hardware %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :updated %><br />
+    <%= f.text_field :updated %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :downloads %><br />
+    <%= f.number_field :downloads %>
+  </div>
+  <div class="field">
+    <%= f.label :returnusers %><br />
+    <%= f.number_field :returnusers %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.number_field :rating %>
+  </div>
+  <div class="field">
+    <%= f.label :free %><br />
+    <%= f.check_box :free %>
+  </div>
+  <div class="field">
+    <%= f.label :paid %><br />
+    <%= f.check_box :paid %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

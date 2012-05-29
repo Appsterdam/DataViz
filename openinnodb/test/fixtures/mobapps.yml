@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  creator: MyString
+  commissioner: MyString
+  copyright: MyString
+  appic: MyString
+  novel: false
+  repackaged: false
+  devlanguage: MyString
+  platform: MyString
+  hardware: MyString
+  date: 2012-05-29
+  updated: MyString
+  location: MyString
+  downloads: 1
+  returnusers: 1
+  rating: 1
+  free: false
+  paid: false
+  category: MyString
+
+two:
+  name: MyString
+  creator: MyString
+  commissioner: MyString
+  copyright: MyString
+  appic: MyString
+  novel: false
+  repackaged: false
+  devlanguage: MyString
+  platform: MyString
+  hardware: MyString
+  date: 2012-05-29
+  updated: MyString
+  location: MyString
+  downloads: 1
+  returnusers: 1
+  rating: 1
+  free: false
+  paid: false
+  category: MyString
