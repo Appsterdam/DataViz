@@ -1,4 +1,7 @@
 Openinnodb::Application.routes.draw do
+  #resources :importers
+  match '/importers' => 'importers#importer'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

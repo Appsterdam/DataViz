@@ -1,0 +1,9 @@
+<h1>Import data to MongoDB</h1>
+<h2>Step 1:</h2>
+<%= form_tag({:action => :upload}, :multipart => true) do %>
+    <%= file_field_tag 'file' %>
+<% end %>
+<h2>Step 2:</h2>
+<% unless @cols.empty? %>
+<%= collection_select(@cols) %>
+<% end %>
