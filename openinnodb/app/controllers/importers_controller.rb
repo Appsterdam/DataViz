@@ -89,7 +89,6 @@ class ImportersController < ApplicationController
 
 
   def frommeetup
-    Importer.meetupretrieve
     Importer.meetupsave
     redirect_to import_path
 

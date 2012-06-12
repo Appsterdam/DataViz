@@ -14,47 +14,67 @@ class Importer
 
   end
 
-  def self.meetupretrieve
+  def self.filterString(inputString)
+    res = ""
+    (1..(inputString.size)).each do |i|
+      if inputString[i-1] < 0xA0.chr then
+        res = res + inputString[i-1]
+      else
+        res = res + "?"
+      end
+    end
+    return res
+  end
+
+  def self.retrievemeetupdata
     #  results=get_response("http://api.meetup.com/2/members.json?key=#{api_key}&sign=true&group_urlname=Appsterdam&page=20")
     # api_key='76324a2830c76662b7b2c3f4f305e39'
     #  res=JSON.parse(results)["results"]
 
     res=[]
-    tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/1000
-    (1..tms).each do
+    tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/200
+    (0..tms).each do
     partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>tms})
     res<<partialres
     end
-    res=res.flatten
-    # change id to meetup_id and put them back to each member
-    id_change={"id"=>"meetup_id"}
-    new_res=[]
-    res.each do |i|
-      new_res<<Hash[i.member.map{|k,v| [id_change[k]||k,v]}]
-
-    end
-    # change ["topics"]["id"] to ["topics"]["topicid"] and put them back to each member
-    t_id_change={"id"=>"topic_id"}
-    new_res.each do |i|
-      final_res=[]
-      i['topics'].each do |topics|
-        final_res<<Hash[topics.map{|c,n| [t_id_change[c]||c,n.class==String ? n.force_encoding("BINARY").gsub!(/\\0x...?$/,"o") : n]}]
-        i['topics']=final_res
-
-      end
-
-
-
-      @finale=new_res
-      # @final_res<<Hash[i["topics"].each {|topics| topics.map{|k,v| [t_id_change[k]||k,v]}}]
-    end
+    return res.flatten
 
   end
-  # @finalres=new_res
 
+  def self.filtermemberData( memberdata )
+    res = self.retrievemeetupdata
+    # change id to meetup_id and put them back to each member
+    id_change={"id"=>"meetup_id"}
+    res=[]
+    memberdata.each do | members |
+      res<<Hash[members.member.map{|k,v| [id_change[k]||k,v.class==String ? self.filterString(v.force_encoding("BINARY")) : v]}]
+
+    end
+    return res
+  end
+
+  def self.filtertopicData( memberdata )
+    # change ["topics"]["id"] to ["topics"]["topicid"] and put them back to each member
+    id_change={"id"=>"topic_id"}
+    memberdata.each do |i|
+      res=[]
+      i['topics'].each do |topics|
+        res<<Hash[topics.map{|k,v| [id_change[k]||k,v.class==String ? self.filterString(v.force_encoding("BINARY")) : v]}]
+        i['topics']=res
+
+      end
+      # @final_res<<Hash[i["topics"].each {|topics| topics.map{|k,v| [t_id_change[k]||k,v]}}]
+    end
+    return memberdata
+
+  end
+
+  def self.meetupretrieve
+     return self.filtertopicData( self.filtermemberData( self.retrievemeetupdata ) )
+  end
 
   def self.meetupsave
-    JSON.parse(@finale.to_json).each do |i|
+    JSON.parse(self.meetupretrieve.to_json).each do |i|
       m=Member.new(i)
       m.save!
       #Member.create(i)

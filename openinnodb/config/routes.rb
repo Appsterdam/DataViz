@@ -3,6 +3,8 @@ Openinnodb::Application.routes.draw do
   match '/import' => 'importers#importer'
   match '/import/again' =>'importers#frommeetup'
   match '/import/dropdb'=>'importers#dropdb'
+  match '/users' => 'members#show'
+  match '/users/user/:id'=>'members#showid'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
