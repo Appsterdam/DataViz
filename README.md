@@ -6,7 +6,7 @@ CIRCA data visualization project
 
 **Project **
 
-mAPPing innovation: Storytelling with community data. 
+InnoViz: Visualizing Stories of App Innovation
 
 **Theme**
 
@@ -14,17 +14,16 @@ Data analysis and data visualization
 
 **Task**
 
-- Create scenarios of use for the database and based on the available data
-investigate the possible niches which can be visualized. 
+Our goal is to understand the role of technology, the role of technology makers 
+in the ecosystem and determine key dimensions of innovation. To gain that understanding 
+we are going to collect and index data that will visualize the creativity, diversity and 
+internationality of the mobile application cluster and will map the driving forces of the 
+App Making Industry. With our findings we want to tackle the lack of empirical data on how 
+technology and grassroots initiatives can steer innovation.
 
-- Answer for who these scenarios and niches are interersting and why. 
-
-- Query the database to make discoveries and test and proof your
-findings. 
-
-- Based on the findings create at least one design and/ or implementation
-of a visualization.
-
+We expect that in December 2012, we will have created an inventory of data to showcase the 
+dynamics of the Industry and examples of best practices. That kind of knowledge will be beneficial 
+for the City, the stakeholders and the communities. 
 
 **Theoretical Framework**
 
@@ -133,17 +132,13 @@ The database created will be handed to the MediaLAb students for further
 data analysis, research and developing case-studies.
 
 
-The project will introduce students to database structures and
-information visualization. Students will work in a multidisciplinary
-team. The team will develop concepts for implementing an interactive
-application for the visualization and navigation of self-chosen data. 
-
-
 **Project Partners**
 
 UvA
 
+Appsterdam
+
 AIM
 
-Appsterdam
+
 
