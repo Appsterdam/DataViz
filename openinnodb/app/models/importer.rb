@@ -1,4 +1,5 @@
 # encoding: utf-8
+# @splir
 class Importer
   include Mongoid::Document
 
