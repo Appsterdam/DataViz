@@ -83,5 +83,22 @@ class ImportersController < ApplicationController
 
   def importer
 @cols=Importer.db_collections.map{|a| [a.capitalize,a]}
+@membercount=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members
   end
+
+
+
+  def frommeetup
+    Importer.meetupretrieve
+    Importer.meetupsave
+    redirect_to import_path
+
+  end
+
+  def dropdb
+    Importer.dropdb
+    flash[:success] = "DB dropped"
+    redirect_to import_path
+  end
+
 end

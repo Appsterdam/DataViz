@@ -6,6 +6,12 @@ GIT
       activesupport
       spreadsheet (~> 0.7)
 
+GIT
+  remote: git://github.com/prwteas/rmeetup.git
+  revision: 909a2ebe5fd2b51f45b8f31d8adb13dfb578fb37
+  specs:
+    rMeetup (1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -135,8 +141,9 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   jquery-rails
-  mongoid
+  mongoid (~> 2.4)
   pry-rails
+  rMeetup (= 1.0)!
   rails (= 3.2.3)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
