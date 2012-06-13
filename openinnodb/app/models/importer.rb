@@ -32,9 +32,9 @@ class Importer
     #  res=JSON.parse(results)["results"]
 
     res=[]
-    tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/200
+    tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/10
     (0..tms).each do
-    partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>tms})
+    partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>tms,:page=>10})
     res<<partialres
     end
     return res.flatten
@@ -42,7 +42,7 @@ class Importer
   end
 
   def self.filtermemberData( memberdata )
-    res = self.retrievemeetupdata
+    #res = self.retrievemeetupdata
     # change id to meetup_id and put them back to each member
     id_change={"id"=>"meetup_id"}
     res=[]

@@ -1,12 +1,12 @@
 class MembersController < ApplicationController
 
-  def show
-    @members = Member.all.to_a
+  def index
+    @members = Member.all
     @columns = Member.columns
   end
 
-  def showid
-    param = params["id"]
-    @member = Member.find(param)
+  def show
+ #   param = params["id"]
+    @member = Member.find(params[:id])
   end
 end

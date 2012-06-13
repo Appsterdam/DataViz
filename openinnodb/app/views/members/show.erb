@@ -1,21 +1,7 @@
-<h1>Members list</h1>
-<table>
-  <% @members.each do |member| %>
-    <tr>
-      <% first = true %>
-      <% Member.columns.each do | key | %>
-          <td>
-            <% if first then %>
-                <a href="/users/user/<%= member.id %>"><% end %>
-
-            <%=  member[key] %></td>
-
-            <% if first then %>
-                </a>
-            <% first = false
-            end %>
-
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<h1><%= @member.name %></h1>
+<% @member.attributes.keys.each do | key | %>
+<div class="property">
+  <span class="label"><%= key %></span>
+  <span class="value"><%= @member[key] %></span>
+</div>
+<% end %>

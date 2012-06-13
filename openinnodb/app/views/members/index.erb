@@ -1,0 +1,12 @@
+<h1>Members list</h1>
+<table>
+ <% @members.each do |member| %>
+  <tr>
+    <td><%= link_to member.meetup_id,member %>   </td>
+      <% Member.columns.each do | key | %>
+          <td><%=  member[key] %></td>
+      <% end %>
+     <% end %>
+  </tr>
+
+</table>
