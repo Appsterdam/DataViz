@@ -1,8 +1,8 @@
-<h1>Members list</h1>
+<h1>Appsterdam group members list</h1>
 <table>
  <% @members.each do |member| %>
   <tr>
-    <td><%= link_to member.meetup_id,member %>   </td>
+    <td><%= link_to member.name,member %>   </td>
       <% Member.columns.each do | key | %>
           <td><%=  member[key] %></td>
       <% end %>

@@ -7,7 +7,9 @@
   font-weight: bold;
 }
 .value {
-  float: left;
+  position: relative;
+  float: right;
+  width:500px;
 }
 .property {
   min-height: 20px;

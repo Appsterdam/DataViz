@@ -27,14 +27,13 @@ class Importer
   end
 
   def self.retrievemeetupdata
-    #  results=get_response("http://api.meetup.com/2/members.json?key=#{api_key}&sign=true&group_urlname=Appsterdam&page=20")
-    # api_key='76324a2830c76662b7b2c3f4f305e39'
-    #  res=JSON.parse(results)["results"]
+
 
     res=[]
-    tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/10
-    (0..tms).each do
-    partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>tms,:page=>10})
+    tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/200
+    (0..tms).each do |i|
+    partialres=[]
+    partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>i,:page=>200})
     res<<partialres
     end
     return res.flatten
@@ -69,8 +68,22 @@ class Importer
 
   end
 
+  def self.filterservicesdata(memberdata)
+    memberdata.each do |i|
+      srvhash=[]
+      i['other_services'].map do |k,v|
+        srvhash<<Hash[name:k,srv_id:v.map{|c,n| n}[0]]
+      i['other_services']=srvhash
+
+        end
+
+    end
+  end
+
+
+
   def self.meetupretrieve
-     return self.filtertopicData( self.filtermemberData( self.retrievemeetupdata ) )
+    return self.filterservicesdata(self.filtertopicData( self.filtermemberData( self.retrievemeetupdata ) ))
   end
 
   def self.meetupsave
