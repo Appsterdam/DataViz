@@ -82,8 +82,9 @@ class ImportersController < ApplicationController
 #  end
 
   def importer
+
 @cols=Importer.db_collections.map{|a| [a.capitalize,a]}
-@membercount=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members
+
   end
 
 

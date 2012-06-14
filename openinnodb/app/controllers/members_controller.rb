@@ -3,6 +3,7 @@ class MembersController < ApplicationController
   def index
     @members = Member.all
     @columns = Member.columns
+    @columns_long=["link",]
 
   end
 

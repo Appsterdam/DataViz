@@ -1,2 +1,2 @@
 #my meetup token
-RMeetup::Client.api_key = ENV['meetup_api']
+RMeetup::Client.api_key = ENV['MEETUP']

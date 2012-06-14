@@ -2,11 +2,31 @@ class Member
   include Mongoid::Document
   include Mongoid::MapReduce
 
+  field :lon,:type=>Float
+  field :link,:type=>String
+  field :lang,:type=>String
+  field :city,:type=>String
+  field :country,:type=>String
+  field :visited,:type=>Integer
+  field :meetup_id,:type=>Integer
+  field :joined,:type=>Integer
+  field :bio, :type=>String
+ # field :photo,:type=>Hash
+  field :name,:type=>String
+  field :lat,:type=>Float
+  field :state,:type=>String
+  field :email,:type=>String
+
+
  embeds_many :topics
  embeds_many :other_services
 
 def self.columns
   [ "city", "country","meetup_id"]
+end
+
+def self.longcolumns
+  ['meetup_id', 'link','joined','visited',  'lon','link','lang']
 end
 
 def self.membertopics(member)

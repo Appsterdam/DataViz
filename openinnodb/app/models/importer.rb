@@ -14,6 +14,10 @@ class Importer
 
   end
 
+  def self.countmembers
+    return RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members
+  end
+
   def self.filterString(inputString)
     res = ""
     (1..(inputString.size)).each do |i|

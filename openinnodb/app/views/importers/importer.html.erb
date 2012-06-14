@@ -1,10 +1,6 @@
 <h1>You can import the Appsterdam members using the MeetUp API here</h1>
-<p>Meetup Appsterdam group has currently <%=@membercount%> members</p>
+<p>Meetup Appsterdam group has currently <%=Importer.countmembers%> members</p>
 <p>The Database has currently: <%= Member.count %> persons</p>
-<p><%= @howmany %></p>
-    <% unless Member.first == nil %>
-        <p><%= Member.first.attributes.keys%></p>
-        <p><%= todate(Member.first.joined)%>
-    <%end%>
-<p><%=link_to "Import again",import_again_path %></p>
+
+<p><%=link_to "Import again",import_again_path,:confirm=>"May you would like to drop the DB first?" %></p>
 <p><%= link_to "Drop DB",import_dropdb_path,:confirm => 'Are you sure?' %></p>
