@@ -1,4 +1,8 @@
 Openinnodb::Application.routes.draw do
+  get "topickeys/show"
+
+  get "topickeys/statistics"
+
   #resources :importers
   match '/import' => 'importers#importer'
   match '/import/again' =>'importers#frommeetup'

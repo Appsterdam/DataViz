@@ -25,17 +25,21 @@ def self.columns
   [ "city", "country","meetup_id"]
 end
 
-def self.longcolumns
-  ['meetup_id', 'link','joined','visited',  'lon','link','lang']
-end
-
 def self.membertopics(member)
    tpcs=[]
   member.topics.each{|i| tpcs<<i.name}
   return tpcs
 end
 
+def self.alltopics
+  tpc=[]
+  Member.all.each do |topics|
+    tpc<<Member.membertopics(topics)
+  end
+   return tpc
+  end
 end
+
 
 
 class Topic
