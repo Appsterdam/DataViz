@@ -29,6 +29,7 @@ gem 'pry-rails', :group => [:development,:test]
 gem 'batch_factory', :git => 'git://github.com/jumph4x/batch-factory.git'
 gem 'rMeetup','1.0', :git=>'git://github.com/prwteas/rmeetup.git'
 gem 'mongoid-mapreduce'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
