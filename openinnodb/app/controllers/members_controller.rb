@@ -3,6 +3,7 @@ class MembersController < ApplicationController
   def index
     @members = Member.all
     @columns = Member.columns
+
   end
 
   def show

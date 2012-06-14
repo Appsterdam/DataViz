@@ -1,12 +1,33 @@
 <h1>Appsterdam group members list</h1>
-<table>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="members" width="100%">
+  <thead>
+  <tr>
+    <th>Name</th>
+  <% @columns.each do |i| %>
+    <th><%= i %></th>
+      <%end%>
+    <th>Topics</th>
+  </tr>
+      </thead>
+  <tbody>
  <% @members.each do |member| %>
   <tr>
-    <td><%= link_to member.name,member %>   </td>
+    <td><%= link_to member.name,member %></td>
       <% Member.columns.each do | key | %>
           <td><%=  member[key] %></td>
       <% end %>
+        <td><%= Member.membertopics(member) %></td>
      <% end %>
   </tr>
-
+  </tbody>
+  <tfoot>
+  <tr>
+    <th>Name</th>
+    <% @columns.each do |i| %>
+        <th><%= i %></th>
+    <%end%>
+    <th>Topics</th>
+  </tr>
+  </tfoot>
 </table>
+

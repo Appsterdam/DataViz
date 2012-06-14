@@ -1,5 +1,6 @@
 class Member
   include Mongoid::Document
+  include Mongoid::MapReduce
 
  embeds_many :topics
  embeds_many :other_services
@@ -8,11 +9,18 @@ def self.columns
   [ "city", "country","meetup_id"]
 end
 
+def self.membertopics(member)
+   tpcs=[]
+  member.topics.each{|i| tpcs<<i.name}
+  return tpcs
+end
 
 end
 
+
 class Topic
   include Mongoid::Document
+  include Mongoid::MapReduce
 
   field :topic_id,:type=>Integer
   field :urlkey,:type=>String
@@ -23,7 +31,7 @@ end
 
 class OtherService
   include Mongoid::Document
-
+  include Mongoid::MapReduce
 
   field :name
   field :srv_id

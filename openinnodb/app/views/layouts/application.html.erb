@@ -3,12 +3,19 @@
 <head>
   <title>Openinnodb</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "demo_table.css" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery.dataTables.js" %>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#members').dataTable();
+    } );
+</script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
-
 </body>
 </html>
