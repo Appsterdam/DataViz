@@ -11,4 +11,8 @@ class MembersController < ApplicationController
  #   param = params["id"]
     @member = Member.find(params[:id])
   end
+
+  def topics
+    @member = Member.where('topics.name'=>params[:topic])
+  end
 end

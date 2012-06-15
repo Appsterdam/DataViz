@@ -1,3 +1,38 @@
 // Place all the styles related to the importers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1{
+  float: left;
+  width:100%;
+  font-size:20px;
+}
+
+h2{
+  font-size: 16px;
+}
+ul{
+  display: block;
+
+  height: 30px;
+  background-color: silver;
+
+
+}
+
+ul li{
+  text-decoration: none;
+  text-align: left;
+  width: 200px;
+  float: left;
+  list-style: none;
+  padding-top: 5px;
+
+}
+a{
+  text-decoration: none;
+}
+
+footer{
+  height:30px;
+}

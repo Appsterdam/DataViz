@@ -36,8 +36,15 @@ def self.alltopics
   Member.all.each do |topics|
     tpc<<Member.membertopics(topics)
   end
-   return tpc
+   return tpc.flatten
   end
+
+  def self.aggregate(what)
+    h = Hash.new(0)
+    what.each { | v | h.store(v, h[v]+1) }
+    return h
+  end
+
 end
 
 

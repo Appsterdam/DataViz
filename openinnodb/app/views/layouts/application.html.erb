@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>Openinnodb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag "demo_table.css" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery.dataTables.js" %>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        $('#members').dataTable();
+        $('#members,#topickeys').dataTable();
     } );
 </script>
 
@@ -16,10 +17,15 @@
 </head>
 <body>
 <header>
-  <ul>
-    <li><%= link_to "Import from Meetup",import_path %></li>
-    <li><%= link_to "Show members",members_path%></li>
-  </ul>
+ <nav>
+   <ul class='nav-bar'>
+     <li><%= link_to "Import from Meetup",import_path,:class=>'main' %></li>
+     <li><%= link_to "Show members",members_path,:class=>'main' %></li>
+     <li><%= link_to "Topic Keys",topickeys_index_path,:class=>'main' %></li>
+     <li><%= link_to "Show Topics graph",topickeys_statistics_path,:class=>'main' %></li>
+   </ul>
+ </nav>
+
 </header>
 
 <%= yield %>
