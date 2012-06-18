@@ -2,12 +2,15 @@ class Topickey
   include Mongoid::Document
   include Mongoid::MapReduce
 
+  field :topic_id,:type=>Integer
   field :title,:type=>String
   field :freq,:type=>Integer
 
+
+
   def self.import
     a=Member.aggregate(Member.alltopics)
-    a.map{|k,v| Topickey.create(:title=>k,:freq=>v)}
+    a.map{|k,v| Topickey.create(:topic_id=>k.map{|c,n| c}[0],:title=>k.map{|c,n| n}[0],:freq=>v)}
   end
 
   def self.columns

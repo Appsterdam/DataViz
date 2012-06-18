@@ -15,7 +15,7 @@
         <% Member.columns.each do | key | %>
             <td><%=  member[key] %></td>
         <% end %>
-        <td><%= Member.membertopics(member) %></td>
+        <td><%= Member.membertopicstitles(member) %></td>
   <% end %>
   </tr>
   </tbody>

@@ -22,22 +22,28 @@ class Member
  embeds_many :other_services
 
 def self.columns
-  [ "city", "country","meetup_id"]
+  [ "city", "country"]
 end
 
 def self.membertopics(member)
    tpcs=[]
-  member.topics.each{|i| tpcs<<i.name}
+  member.topics.each{|i| tpcs<<Hash[i.topic_id,i.name]}
   return tpcs
 end
 
+def self.membertopicstitles(member)
+    tpcs=[]
+    member.topics.each{|i| tpcs<<i.name}
+    return tpcs
+end
 def self.alltopics
   tpc=[]
   Member.all.each do |topics|
     tpc<<Member.membertopics(topics)
   end
    return tpc.flatten
-  end
+end
+
 
   def self.aggregate(what)
     h = Hash.new(0)

@@ -11,7 +11,7 @@ Openinnodb::Application.routes.draw do
   #match '/members/:id' => 'members#show'
   #match '/members' => 'members#index'
   resources :members
-  match '/members/topics/:topic' => 'members#topics'
+  match '/members/topic/:topicid' => 'members#topic',:as=>:topics
   resources :events
   # The priority is based upon order of creation:
   # first created -> highest priority.
