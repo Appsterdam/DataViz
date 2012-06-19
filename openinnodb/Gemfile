@@ -33,6 +33,7 @@ gem "zurb-foundation", :group => :assets
 gem 'tabler'
 gem 'resque'
 gem 'foreman'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
