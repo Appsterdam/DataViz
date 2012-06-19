@@ -1,3 +1,10 @@
+class MemberImporter
+  @queue = :member
+  def self.perform
+    Importer.meetupsave
+  end
+end
+
 class Member
   include Mongoid::Document
   include Mongoid::MapReduce
@@ -49,6 +56,10 @@ end
     h = Hash.new(0)
     what.each { | v | h.store(v, h[v]+1) }
     return h
+  end
+
+  def self.async_scrape
+    Resque.enqueue(MemberImporter)
   end
 
 end

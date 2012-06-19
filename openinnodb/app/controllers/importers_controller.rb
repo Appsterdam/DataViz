@@ -90,7 +90,8 @@ class ImportersController < ApplicationController
 
 
   def frommeetup
-    Importer.meetupsave
+    Member.async_scrape
+    #Importer.meetupsave
     redirect_to import_path
 
   end

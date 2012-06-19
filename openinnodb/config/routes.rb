@@ -13,6 +13,8 @@ Openinnodb::Application.routes.draw do
   resources :members
   match '/members/topic/:topicid' => 'members#topic',:as=>:topics
   resources :events
+
+  mount Resque::Server.new, :at => "/resque"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

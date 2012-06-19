@@ -31,6 +31,8 @@ gem 'rMeetup','1.0', :git=>'git://github.com/prwteas/rmeetup.git'
 gem 'mongoid-mapreduce'
 gem "zurb-foundation", :group => :assets
 gem 'tabler'
+gem 'resque'
+gem 'foreman'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
