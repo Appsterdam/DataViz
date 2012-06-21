@@ -1,4 +1,12 @@
 Openinnodb::Application.routes.draw do
+  get "groups/index"
+
+  match "groups/show/:id" => 'groups#show',:as=>:group
+
+  get "membersas/index"
+
+  get "membersas/show"
+
   get "topickeys/index"
 
   get "topickeys/statistics"

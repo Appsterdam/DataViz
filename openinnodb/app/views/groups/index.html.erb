@@ -1,0 +1,25 @@
+<h3>Appsterdamers who share the same meetup:</h3>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="members" width="100%">
+  <thead>
+  <tr>
+    <th>Group</th>
+    <th>Name</th>
+    <th>Total</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @groups.each do |i| %>
+      <tr>
+        <td><%= link_to i.name,group_url(:id=>i.id) %></td>
+        <td>
+          <% i.membersas.all.each do |k|%>
+          <%= link_to k.name,member_path(:id=>k.id) %> |
+              <% end %>
+
+        </td>
+        <td><%= i.membersas.count %></td>
+      </tr>
+  <%end%>
+  </tbody>
+  <tfoot></tfoot>
+</table>
