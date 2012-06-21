@@ -28,6 +28,8 @@ class Member
  embeds_many :topics
  embeds_many :other_services
 
+ index :meetup_id, unique: true
+
 def self.columns
   [ "city", "country"]
 end
