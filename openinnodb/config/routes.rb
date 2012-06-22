@@ -16,6 +16,9 @@ Openinnodb::Application.routes.draw do
   match '/import' => 'importers#importer'
   match '/import/again' =>'importers#frommeetup'
   match '/import/dropdb'=>'importers#dropdb'
+  match '/import/groups'=>'importers#importgroups'
+  match '/import/dropgroupdb' =>'importers#dropgroupdb'
+  match '/import/establishrel' => 'importers#connectgroupsandmembers'
   #match '/members/:id' => 'members#show'
   #match '/members' => 'members#index'
   resources :members

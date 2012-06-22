@@ -98,19 +98,32 @@ class ImportersController < ApplicationController
   end
 
   def importgroups
+    if Resque.size("member") == 0
     Groupraw.async_scrape
     Groupsa.async_scrape
+    Groupsa.async_relation
+    Membersa.async_relation
+    redirect_to import_path
+    end
   end
 
   def connectgroupsandmembers
-    Groupsa.importMembers
-    Membersa.importGroups
+    Groupsa.async_relation
+    Membersa.async_relation
+    flash[:notice]="Resque worker is doing this now!"
+    redirect_to import_path
   end
 
   def dropdb
     Importer.dropdb
     Membersa.dropdb
-    flash[:success] = "DB dropped"
+    flash[:notice] = "MemberDB dropped"
+    redirect_to import_path
+  end
+
+  def dropgroupdb
+    Groupraw.destroy_all
+    flash[:notice]='Group DB was erased'
     redirect_to import_path
   end
 

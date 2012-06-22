@@ -15,7 +15,11 @@ class Importer
   end
 
   def self.countmembers
+    begin
     return RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members
+    rescue
+      return "Unknown (max rate reached)"
+      end
   end
 
   def self.filterString(inputString)
@@ -100,6 +104,14 @@ class Importer
 
   def self.dropdb
     Mongoid.master.collection("members").drop
+  end
+
+  def self.checkgroupq
+    if Resque.size("group")==0
+      return "No"
+    else
+      return "Yes"
+    end
   end
 
 

@@ -6,7 +6,7 @@ class MembersaImportFromRaw
 end
 
 class MembersaImportGroups
-  @queue=:groupmemberrelation
+  @queue=:group
   def self.perform
     Membersa.importGroups
   end

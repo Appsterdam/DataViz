@@ -27,6 +27,12 @@
      <li><%= link_to "Resque Q",'/resque',:class=>'main' %></li>
    </ul>
  </nav>
+  <% if flash[:notice] %>
+      <p id="notice"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:error] %>
+      <p id="error"><%= flash[:error] %></p>
+  <% end %>
 
 </header>
 

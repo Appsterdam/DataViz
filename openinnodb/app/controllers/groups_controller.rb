@@ -6,4 +6,5 @@ class GroupsController < ApplicationController
   def show
     @group=Groupsa.where('_id'=>params[:id].to_i).first
   end
+
 end

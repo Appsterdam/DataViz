@@ -2,6 +2,14 @@
 
 Open Innovation DB web app is being developed in order to host the data that is going to be collected during the lifecycle of the Data Visualization project.
 
+### Usage
+
+To start the application first clone it from `Github` and start it with:
+
+	foreman start
+
+This will start the `Thin` server, the `Resque` QUEUEs and the `Redis` server
+
 ### Collections
 
 The idea is that the raw data retrieved from meetup should reside in a seperate collection (playing a proxy role) and they are then cloned to colelctions which are going to be the source for the Data Analysis.
