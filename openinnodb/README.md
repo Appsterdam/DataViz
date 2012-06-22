@@ -1,8 +1,19 @@
-== Welcome to Open Innovation DB web application
+## Welcome to Open Innovation DB web application
 
 Open Innovation DB web app is being developed in order to host the data that is going to be collected during the lifecycle of the Data Visualization project.
 
-### WORKFLOW:
+### Collections
+
+The idea is that the raw data retrieved from meetup should reside in a seperate collection (playing a proxy role) and they are then cloned to colelctions which are going to be the source for the Data Analysis.
+Here is the mapping:
+
+Meetup attribute | Proxy collection | Usable collection
+-----------------|------------------|------------------
+members|Member|Membersa
+groups|Groupraw|Groupsa
+
+
+### WORKFLOW for Importing Meetup data (Members, Groups) to the InnoViz DB:
  Order | Model invoked | Action
 :-------:|:---------------:|:--------:
 1|Importer|Retrieve meetup members to Member
