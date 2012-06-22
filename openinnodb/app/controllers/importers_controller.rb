@@ -91,13 +91,25 @@ class ImportersController < ApplicationController
 
   def frommeetup
     Member.async_scrape
+    Membersa.async_scrape
     #Importer.meetupsave
     redirect_to import_path
 
   end
 
+  def importgroups
+    Groupraw.async_scrape
+    Groupsa.async_scrape
+  end
+
+  def connectgroupsandmembers
+    Groupsa.importMembers
+    Membersa.importGroups
+  end
+
   def dropdb
     Importer.dropdb
+    Membersa.dropdb
     flash[:success] = "DB dropped"
     redirect_to import_path
   end

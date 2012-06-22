@@ -1,3 +1,10 @@
+class GroupRawImport
+  @queue=:group
+  def self.perform
+    Groupraw.retrieveAndSave
+  end
+end
+
 class Groupraw
   include Mongoid::Document
   field :member_id, :type => Integer
@@ -33,7 +40,8 @@ class Groupraw
   end
 
   def self.remainingRate
-    http = Curl::Easy.perform('http://api.meetup.com/members/?relation=self&key=#{ENV["MEETUP"]}')
+    m=ENV['MEETUP']
+    http = Curl::Easy.perform("http://api.meetup.com/members/?relation=self&key="+m)
     return http.header_str.match(/(X-RateLimit-Remaining):(....)/)[2].to_i
   end
 
@@ -51,6 +59,10 @@ class Groupraw
     withNoGroup.each do |i|
       grouprawRetrieve(i)
     end
+  end
+
+  def self.async_scrape
+    Resque.enqueue(GroupRawImport)
   end
 
 end

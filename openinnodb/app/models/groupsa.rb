@@ -1,3 +1,17 @@
+class GroupsaImportFromRaw
+  @queue=:group
+  def self.perform
+    Groupsa.importFromRaw
+  end
+end
+
+class GroupsaImportMembers
+  @queue=:groupmemberrelation
+  def self.perform
+    Groupsa.importMembers
+  end
+end
+
 class Groupsa
   include Mongoid::Document
   include Mongoid::MapReduce
@@ -31,5 +45,12 @@ class Groupsa
     end
   end
 
+  def self.async_scrape
+    Resque.enqueue(GroupsaImportFromRaw)
+  end
+
+  def self.async_relation
+    Resque.enqueue(GroupsaImportMembers)
+  end
 
 end

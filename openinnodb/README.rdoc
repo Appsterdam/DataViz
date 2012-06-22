@@ -1,3 +1,0 @@
-== Welcome to Open Innovation DB web application
-
-Open Innovation DB web app is being developed in order to host the data that is going to be collected during the lifecycle of the Data Visualization project.

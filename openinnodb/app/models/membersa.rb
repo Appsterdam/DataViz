@@ -1,3 +1,17 @@
+class MembersaImportFromRaw
+  @queue=:member
+  def self.perform
+    Membersa.importFromRaw
+  end
+end
+
+class MembersaImportGroups
+  @queue=:groupmemberrelation
+  def self.perform
+    Membersa.importGroups
+  end
+end
+
 class Membersa
   include Mongoid::Document
   include Mongoid::MapReduce
@@ -53,6 +67,14 @@ class Membersa
        k<<i.name
     end
     return k.join(",")
+  end
+
+  def self.async_scrape
+    Resque.enqueue(MembersaImportFromRaw)
+  end
+
+  def self.async_relation
+    Resque.enqueue(MembersaImportGroups)
   end
 end
 

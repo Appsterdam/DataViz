@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Groups</th>
+    <th>Total</th>
   </tr>
   </thead>
   <tbody>
@@ -11,8 +12,11 @@
     <tr>
       <td><%= i.name %></td>
       <td>
-        <% i.groupsas%>
+        <% i.groupsas.each do |k|%>
+        <%= k.name %> |
+            <% end %>
       </td>
+      <td><%= i.groupsas.count %></td>
     </tr>
       <%end%>
   </tbody>
