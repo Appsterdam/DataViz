@@ -42,7 +42,7 @@
 
 <p>
   <b>Topics:</b>
-  <%= Member.membertopics(@member) %>
+  <%= @member.topics_titles.join(",") %>
 </p>
 
 <p>
@@ -51,9 +51,9 @@
   <% @member.other_services.each do |s| %>
     <% if s.name=="linkedin" %>
          <%= s.name %>: <%= link_to s.srv_id, s.srv_id %><br>
-       <%else%>
+       <% else %>
          <%= s.name %>: <%= s.srv_id %><br>
-       <%end%>
-    <%end%>
+       <% end %>
+    <% end %>
 </p>
 

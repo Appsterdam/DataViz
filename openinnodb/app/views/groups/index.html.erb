@@ -12,14 +12,14 @@
       <tr>
         <td><%= link_to i.name,group_url(:id=>i.id) %></td>
         <td>
-          <% i.membersas.all.each do |k|%>
-          <%= link_to k.name,member_path(:id=>k.id) %> |
-              <% end %>
+            <% i.membersas.all.each do |k|%>
+                <%= link_to k.name,member_path(:id=>k.id) %> |
+            <% end %>
 
         </td>
         <td><%= i.membersas.count %></td>
       </tr>
-  <%end%>
+  <% end %>
   </tbody>
   <tfoot></tfoot>
 </table>

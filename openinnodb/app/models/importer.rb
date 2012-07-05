@@ -1,28 +1,28 @@
 # encoding: utf-8
-# @splir
+
 class Importer
   include Mongoid::Document
 
   def self.db_collections
     db=Mongoid.master.collection_names
     shown_col=[]
-    db.each do |el|
-      if el.scan(/^system/).empty?
-        shown_col << el
+      db.each do |el|
+        if el.scan(/^system/).empty?
+          shown_col << el
+        end
       end
-    end
 
   end
 
-  def self.countmembers
+  def self.countmembers  # Count the total members Appsterdam has
     begin
-    return RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members
+      return RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members
     rescue
       return "Unknown (max rate reached)"
-      end
+    end
   end
 
-  def self.filterString(inputString)
+  def self.filterString(inputString)  # filter the invalid characters
     res = ""
     (1..(inputString.size)).each do |i|
       if inputString[i-1] < 0xA0.chr then
@@ -31,36 +31,36 @@ class Importer
         res = res + "?"
       end
     end
-    return res
+    #return res
   end
 
-  def self.retrievemeetupdata
-
-
+  def self.retrievemeetupdata # retrieve the Appsterdam member data directly from the API
     res=[]
     tms=RMeetup::Client.fetch(:groups,{:group_urlname=>'Appsterdam'}).first.members/200
+
     (0..tms).each do |i|
-    partialres=[]
-    partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>i,:page=>200})
-    res<<partialres
+      partialres=[]
+      partialres = RMeetup::Client.fetch(:members,{:group_urlname=>'Appsterdam',:offset=>i,:page=>200})
+      res<<partialres
     end
-    return res.flatten
+
+    res.flatten
 
   end
 
-  def self.filtermemberData( memberdata )
+  def self.filtermemberData(memberdata) # replace the 'id' field with 'member_id' as it raises exceptions when saving
     #res = self.retrievemeetupdata
     # change id to meetup_id and put them back to each member
-    id_change={"id"=>"meetup_id"}
+    id_change={"id" => "meetup_id"}
     res=[]
-    memberdata.each do | members |
-      res<<Hash[members.member.map{|k,v| [id_change[k]||k,v.class==String ? self.filterString(v.force_encoding("BINARY")) : v]}]
+    memberdata.each do |members|
+      res<<Hash[members.member.map { |k, v| [id_change[k]||k, v.class==String ? self.filterString(v.force_encoding("BINARY")) : v] }]
 
     end
     return res
   end
 
-  def self.filtertopicData( memberdata )
+  def self.filtertopicData( memberdata ) # replace 'id' field with 'topic_id'
     # change ["topics"]["id"] to ["topics"]["topicid"] and put them back to each member
     id_change={"id"=>"topic_id"}
     memberdata.each do |i|
@@ -90,11 +90,13 @@ class Importer
 
 
 
+
+
   def self.meetupretrieve
     return self.filterservicesdata(self.filtertopicData( self.filtermemberData( self.retrievemeetupdata ) ))
   end
 
-  def self.meetupsave
+  def self.meetupsave  # This is the function used to finally import the data
     JSON.parse(self.meetupretrieve.to_json).each do |i|
       m=Member.new(i)
       m.save!
@@ -103,7 +105,8 @@ class Importer
   end
 
   def self.dropdb
-    Mongoid.master.collection("members").drop
+    #Mongoid.master.collection("members").drop
+    Member.destroy_all
   end
 
   def self.checkgroupq

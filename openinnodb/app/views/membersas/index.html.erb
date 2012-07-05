@@ -12,13 +12,12 @@
     <tr>
       <td><%= i.name %></td>
       <td>
-        <% i.groupsas.each do |k|%>
-        <%= k.name %> |
-            <% end %>
+        <%= i.showgroups %>
+
       </td>
       <td><%= i.groupsas.count %></td>
     </tr>
-      <%end%>
+      <% end %>
   </tbody>
   <tfoot></tfoot>
 </table>

@@ -1,3 +1,11 @@
+class Importkeys
+  @queue=:member
+
+  def self.perform
+    Topickey.import
+  end
+end
+
 class Topickey
   include Mongoid::Document
   include Mongoid::MapReduce
@@ -9,7 +17,7 @@ class Topickey
 
 
   def self.import
-    a=Member.aggregate(Member.alltopics)
+    a=Member.summarize
     a.map{|k,v| Topickey.create(:topic_id=>k.map{|c,n| c}[0],:title=>k.map{|c,n| n}[0],:freq=>v)}
   end
 
@@ -26,7 +34,12 @@ class Topickey
   #end
 
   def self.dropdb
-    Mongoid.master.collection("topickeys").drop
+   # Mongoid.master.collection("topickeys").drop
+    Topickey.destroy_all
+  end
+
+  def self.async_scrape
+    Resque.enqueue(Importkeys)
   end
 end
 

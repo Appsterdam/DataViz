@@ -4,18 +4,18 @@
     <th>Name</th>
     <% @columns.each do |i| %>
         <th><%= i %></th>
-    <%end%>
+    <% end %>
     <th>Topics</th>
   </tr>
   </thead>
   <tbody>
   <% @members.each do |member| %>
       <tr>
-        <td><%= link_to member.name,member %></td>
-        <% Member.columns.each do | key | %>
-            <td><%=  member[key] %></td>
+        <td><%= link_to member.name, member %></td>
+        <% Member.columns.each do |key| %>
+            <td><%= member[key] %></td>
         <% end %>
-        <td><%= Member.membertopicstitles(member) %></td>
+        <td><%= member.topics_titles.join(",") %></td>
   <% end %>
   </tr>
   </tbody>
@@ -24,7 +24,7 @@
     <th>Name</th>
     <% @columns.each do |i| %>
         <th><%= i %></th>
-    <%end%>
+    <% end %>
     <th>Topics</th>
   </tr>
   </tfoot>

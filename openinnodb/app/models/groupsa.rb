@@ -1,5 +1,6 @@
 class GroupsaImportFromRaw
   @queue=:group
+
   def self.perform
     Groupsa.importFromRaw
   end
@@ -7,6 +8,7 @@ end
 
 class GroupsaImportMembers
   @queue=:group
+
   def self.perform
     Groupsa.importMembers
   end
@@ -21,13 +23,14 @@ class Groupsa
   index :name, unique: true
 
   def self.dropdb
-    Mongoid.master.collection("groupsas").drop
+    #Mongoid.master.collection("groupsas").drop
+    Groupsa.destroy_all
   end
 
   def self.importFromRaw
     Groupraw.all.each do |i|
       i.grps.each do |k|
-          m=Groupsa.new
+        m=Groupsa.new
         m.attributes=k.attributes
         m.save
       end
@@ -38,8 +41,8 @@ class Groupsa
   def self.importMembers
     Groupraw.all.each do |i|
       i.grps.all.each do |k|
-      m=Groupsa.find(k.id)
-        m.membersas << Membersa.where('meetup_id'=>i.member_id).first
+        m=Groupsa.find(k.id)
+        m.membersas << Membersa.where('meetup_id' => i.member_id).first
       end
 
     end
