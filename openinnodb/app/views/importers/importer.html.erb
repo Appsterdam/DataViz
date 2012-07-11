@@ -2,7 +2,7 @@
 <p>Meetup Appsterdam group has currently <%=Importer.countmembers%> members</p>
 <p>The Database has currently: <%= Member.count %> persons</p>
 
-<p><%=link_to "Import again",import_again_path,:confirm=>"Last check" %></p>
+<p><%= link_to "Import again",import_again_path,:confirm=>"Last check" %></p>
 <p><%= link_to "Drop DB",import_dropdb_path,:confirm => 'Are you sure?' %></p>
 
 <p>There are groups collected for <%= Groupraw.count %> members</p>
