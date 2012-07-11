@@ -31,7 +31,7 @@ class Importer
         res = res + "?"
       end
     end
-    #return res
+    return res
   end
 
   def self.retrievemeetupdata # retrieve the Appsterdam member data directly from the API
