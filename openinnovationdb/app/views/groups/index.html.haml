@@ -1,0 +1,16 @@
+.flickr_pagination= will_paginate @groups
+%table
+  %thead
+    %tr
+      %th Group
+      %th Members
+      %th Total
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= link_to group.name,group_url(group.id)
+        %td
+          - group.members.each do |member|
+            = link_to(member.name,member_path(member.id))+" | "
+        %td= group.members.map(&:name).count
+.flickr_pagination= will_paginate @groups

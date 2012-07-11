@@ -1,0 +1,4 @@
+web: bundle exec rails s -p $PORT
+redis: redis-server /usr/local/etc/redis.conf
+resque:  bundle exec rake resque:work QUEUE=member
+resque:  bundle exec rake resque:work QUEUE=group

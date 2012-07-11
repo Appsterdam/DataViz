@@ -1,0 +1,128 @@
+<script type="text/javascript">
+    $(function () {
+        var chart;
+        $(document).ready(function() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container_keys',
+                    type: 'column'
+
+
+                },
+                title: {
+                    text: 'Referenced Topics'
+                },
+                subtitle: {
+                    text: 'as specified by members'
+                },
+                xAxis:{
+                    categories:[''],
+                    title:{
+                        text:'Topics'}
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'People'
+                    }
+                },
+                legend: {
+                    layout: 'horizontal',
+                    backgroundColor: '#FFFFFF',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 700,
+                    y: 50,
+                    floating: true,
+                    shadow: true,
+                    width:400
+                },
+                tooltip: {
+                    formatter: function() {
+                        return ''+
+                                 this.series.name +':'+this.y+' persons';
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [
+                    <% @topickeys.each do |i|%>
+                    {name:'<%=i.title%>',
+                     data:[<%=i.freq%>]},
+                        <%end%>
+                      ]
+            });
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var chart;
+        $(document).ready(function() {
+            chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container_tags',
+                    type: 'column'
+
+
+                },
+                title: {
+                    text: 'Referenced Tags'
+                },
+                subtitle: {
+                    text: 'which are common in Topickeys'
+                },
+                xAxis:{
+                    categories:[''],
+                    title:{
+                        text:'Tags'}
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Frequency'
+                    }
+                },
+                legend: {
+                    layout: 'horizontal',
+                    backgroundColor: '#FFFFFF',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 700,
+                    y: 50,
+                    floating: true,
+                    shadow: true,
+                    width:400
+                },
+                tooltip: {
+                    formatter: function() {
+                        return ''+
+                                 this.series.name +':'+this.y+' topics';
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [
+                    <% @topictags.each do |i|%>
+                    {name:'<%=i.tag%>',
+                     data:[<%=i.freq%>]},
+                        <%end%>
+                      ]
+            });
+        });
+
+    });
+</script>
+<%= render :partial=>'nav' %>
+<div id="container_tags" style="min-width: 400px; height: 500px; margin: 0 auto"></div>
+<div id="container_keys" style="min-width: 400px; height: 400px; margin: 30px auto"></div>

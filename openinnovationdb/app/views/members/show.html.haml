@@ -1,0 +1,55 @@
+%p#notice= notice
+
+%p
+  %b Lon:
+  = @member.lon
+%p
+  %b Link:
+  = @member.link
+%p
+  %b Lang:
+  = @member.lang
+%p
+  %b City:
+  = @member.city
+%p
+  %b Country:
+  = @member.country
+%p
+  %b Visited:
+  = todate(@member.visited)
+%p
+  %b Meetup:
+  = @member.meetup_id
+%p
+  %b Joined:
+  = todate(@member.joined)
+%p
+  %b Bio:
+  = @member.bio
+%p
+  %b Topics:
+  = @member.topics_titles.join(", ")
+%p
+  %b Groups:
+  = @member.groups_titles.join(", ")
+%p
+  %b Photo:
+  = @member.photo.nil? ? "None" : image_tag(@member.photo['thumb_link'])
+%p
+  %b Name:
+  = @member.name
+%p
+  %b Lat:
+  = @member.lat
+%p
+  %b State:
+  = @member.state
+%p
+  %b Email:
+  = @member.email
+
+
+= link_to 'Edit', edit_member_path(@member)
+\|
+= link_to 'Back', members_path

@@ -1,0 +1,50 @@
+%h1 Listing members
+
+%p.search
+- form_tag request.path, :method => 'get' do
+  - content_tag :label do
+    = text_field_tag :search, params[:search]
+
+.flickr_pagination= will_paginate @members
+%table
+  %tr
+    %th Name
+    %th Photo
+    / %th Lon
+    / %th Link
+    %th Lang
+    %th City
+    %th Country
+    / %th Visited
+    / %th Meetup
+    / %th Joined
+    / %th Bio
+    / %th Lat
+    / %th State
+    / %th Email
+    %th
+    %th
+    %th
+  - @members.each do |member|
+    %tr
+      %td= member.name
+      %td= member.photo.nil? ? "None" : image_tag(member.photo['thumb_link'])
+      / %td= member.lon
+      / %td= member.link
+      %td= member.lang
+      %td= member.city
+      %td= member.country
+      / %td= member.visited
+      / %td= member.meetup_id
+      / %td= member.joined
+      / %td= member.bio
+      / %td= member.lat
+      / %td= member.state
+      / %td= member.email
+      %td= link_to 'Show', member
+      %td= link_to 'Edit', edit_member_path(member)
+      %td= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Member', new_member_path

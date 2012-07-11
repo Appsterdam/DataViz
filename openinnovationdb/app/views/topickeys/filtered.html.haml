@@ -1,0 +1,16 @@
+= render :partial => 'nav'
+%table
+  %thead
+    %tr
+      %th Filter
+      %th Original
+      %th Persons
+  %tbody
+    %tr
+      %td Android
+      %td= @android_titles.join(', ')
+      %td= @android_sum    
+    %tr
+      %td iOS
+      %td= @ios_titles.join(', ')  
+      %td= @ios_sum

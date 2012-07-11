@@ -1,0 +1,15 @@
+= link_to "Members",members_path,:class=>'main'
+/ = link_to "Import from Meetup",import_path,:class=>'main'
+= link_to "Topics",topics_path,:class=>'main'
+= link_to "Groups",groups_index_path,:class=>'main'
+= link_to "Resque Q",'/resque',:class=>'main'
+%ul.nav
+  - if user_signed_in?
+    %li
+      Logged in as #{current_user.name}
+    %li
+      = link_to('Logout', signout_path)
+  - else
+    %li
+      = link_to('Login', signin_path)
+  %li= link_to "Import from Meetup",import_path     

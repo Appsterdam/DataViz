@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lon: 1.5
+  link: MyString
+  lang: MyString
+  city: MyString
+  country: MyString
+  visited: 1
+  meetup_id: 1
+  joined: 1
+  bio: MyString
+  photo: 
+  name: MyString
+  lat: 1.5
+  state: MyString
+  email: MyString
+
+two:
+  lon: 1.5
+  link: MyString
+  lang: MyString
+  city: MyString
+  country: MyString
+  visited: 1
+  meetup_id: 1
+  joined: 1
+  bio: MyString
+  photo: 
+  name: MyString
+  lat: 1.5
+  state: MyString
+  email: MyString

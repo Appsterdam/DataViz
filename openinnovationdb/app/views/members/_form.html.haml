@@ -1,0 +1,52 @@
+= form_for @member do |f|
+  -if @member.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@member.errors.count, "error")} prohibited this member from being saved:"
+      %ul
+        - @member.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :lon
+    = f.text_field :lon
+  .field
+    = f.label :link
+    = f.text_field :link
+  .field
+    = f.label :lang
+    = f.text_field :lang
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :country
+    = f.text_field :country
+  .field
+    = f.label :visited
+    = f.number_field :visited
+  .field
+    = f.label :meetup_id
+    = f.number_field :meetup_id
+  .field
+    = f.label :joined
+    = f.number_field :joined
+  .field
+    = f.label :bio
+    = f.text_field :bio
+  .field
+    = f.label :photo
+    = f.text_field :photo
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :lat
+    = f.text_field :lat
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :email
+    = f.text_field :email
+  .actions
+    = f.submit 'Save'

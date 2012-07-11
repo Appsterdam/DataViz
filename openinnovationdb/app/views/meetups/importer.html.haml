@@ -1,0 +1,19 @@
+%h3 You can import meetup data here
+.members
+  %p Appsterdam Meetup has currently #{Meetup.countmembers} members
+  %p The Database has currently: #{Member.count} persons
+
+  %p= link_to("Import again",import_again_path,:confirm=>"Last check")
+  %p= link_to("Drop DB",import_dropdb_path,:confirm => 'Are you sure?')
+
+.topics
+  %p Currently the Database contains #{Topickey.count} unique topics
+  %p= link_to("Import again",import_topics_path,:confirm=>"Last check")
+  %p= link_to("Drop DB",import_topics_dropdb_path, :confirm=>"Sure?")
+
+.groups
+  %p There are groups collected for #{Rawgroup.count} members
+  %p Is the Resque Q for Group collection running: #{Meetup.checkgroupq}
+
+  %p= link_to("Import again",import_groups_path,:confirm=>"Last check")
+  %p= link_to("Drop DB",import_groups_dropdb_path,:confirm => 'Are you sure?')
