@@ -33,15 +33,15 @@ class MeetupsController < ApplicationController
   end
 
   def dropdb
-    Rawmember.destroy_all
+    Meetup.dropdb
    # Membersa.destroy_all
-    flash[:notice] = "MemberDB destroyed"
+    flash[:error] = "MemberDB destroyed"
     redirect_to import_path
   end
 
   def drop_groupdb
     Rawgroup.destroy_all
-    flash[:notice]='Group DB was destroyed'
+    flash[:error]='Group DB was destroyed'
     redirect_to import_path
   end
 

@@ -18,23 +18,23 @@ class Group
   include Mongoid::Document
   include Mongoid::MapReduce
 
-	field :city,		:type=>String
-	field :country,		:type=>String
-	field :created,		:type=>Integer
+	field :city,		    :type=>String
+	field :country,		  :type=>String
+	field :created,		  :type=>Integer
 	field :description,	:type=>String
 	field :group_photo,	:type=>Hash
-	field :join_mode,	:type=>String
-	field :lat,			:type=>Float
-	field :link,		:type=>String
-	field :lon,			:type=>Float
-	field :name,		:type=>String
-	field :organizer,	:type=>String
-	field :rating,		:type=>String
-	field :state,		:type=>String
-	field :topics,		:type=>Hash
-	field :urlname,		:type=>String
+	field :join_mode,	  :type=>String
+	field :lat,			    :type=>Float
+	field :link,		    :type=>String
+	field :lon,			    :type=>Float
+	field :name,		    :type=>String
+	field :organizer,	  :type=>String
+	field :rating,		  :type=>String
+	field :state,		    :type=>String
+	field :topics,		  :type=>Hash
+	field :urlname,		  :type=>String
 	field :visibility,	:type=>String
-	field :who,			:type=>String
+	field :who,			    :type=>String
 
   has_and_belongs_to_many :members
 

@@ -2,7 +2,7 @@
 / = link_to "Import from Meetup",import_path,:class=>'main'
 = link_to "Topics",topics_path,:class=>'main'
 = link_to "Groups",groups_index_path,:class=>'main'
-= link_to "Resque Q",'/resque',:class=>'main'
+= link_to "Resque Q",'/resque',:class=>'main',:target=>"_blank"
 %ul.nav
   - if user_signed_in?
     %li

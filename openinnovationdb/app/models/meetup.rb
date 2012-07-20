@@ -93,14 +93,15 @@ class Meetup
   def self.meetupsave  # This is the function used to finally import the data
     JSON.parse(self.meetupretrieve.to_json).each do |i|
       m=Rawmember.new(i)
-      m.save!
+      m.save
       #Member.create(i)
     end
   end
 
   def self.dropdb
     #Mongoid.master.collection("members").drop
-    Rawember.destroy_all
+    Rawmember.destroy_all
+    Member.destroy_all
   end
 
   def self.checkgroupq
@@ -109,6 +110,12 @@ class Meetup
     else
       return "Yes"
     end
+  end
+
+  def self.remainingRate
+    m=ENV['MEETUP']
+    http = Curl::Easy.perform("http://api.meetup.com/members/?relation=self&key="+m)
+    return http.header_str.match(/^(X-RateLimit-Remaining):(..?.?.?.?.?\s)$/)[2].to_i
   end
 
 end

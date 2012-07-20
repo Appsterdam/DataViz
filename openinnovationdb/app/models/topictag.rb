@@ -27,7 +27,7 @@ class Topictag
 	end
 
 	def self.async_scrape
-		Resque.enqeue(TagImport)
+		Resque.enqueue(TagImport)
 	end
 
 	def union_topickeys

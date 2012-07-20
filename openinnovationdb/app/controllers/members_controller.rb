@@ -6,7 +6,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @members }
+      format.json { render json: @members, :except=>[:_id,:self,:lon,:link,:visited,:meetup_id,:joined,:photo,:lat,:email] }
     end
   end
 
@@ -17,7 +17,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @member }
+      format.json { render json: @member,:except=>[:_id,:self,:lon,:link,:visited,:meetup_id,:joined,:photo,:lat,:email] }
     end
   end
 

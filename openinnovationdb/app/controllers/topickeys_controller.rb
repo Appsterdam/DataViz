@@ -1,11 +1,11 @@
 class TopickeysController < ApplicationController
   def index
   	@topickeys=Topickey.order_by([:freq,:desc]).paginate(:page=>params[:page],:per_page=>20)
-
+    @topickeysall=Topickey.all
   	respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @topickeys }
-      format.xml { render xml: @topickeys }
+      format.json { render json: @topickeysall,:except=>[:_id] }
+      format.xml { render xml: @topickeysall,:except=>[:_id]}
     end
 
   end
@@ -20,6 +20,12 @@ class TopickeysController < ApplicationController
 
   def tags
   	@topictags=Topictag.order_by([:freq,:desc]).paginate(:page=>params[:page],:per_page=>5)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @topictags,:except=>[:_id] }
+      format.xml { render xml: @topictags,:except=>[:_id]}
+    end
     
   end
 
