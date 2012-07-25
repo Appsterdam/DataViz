@@ -1,5 +1,7 @@
 Openinnovationdb::Application.routes.draw do
 
+  resources :gitusers
+
   resources :companies
 
   mount Resque::Server.new, :at => "/resque"
