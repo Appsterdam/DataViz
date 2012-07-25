@@ -17,13 +17,21 @@ class Topickey
   index :topic_id, unique: true 
 
   def self.android
-  	Topickey.all.find_all { |t| t.title =~ /(android)/i }
+  	all.find_all { |t| t.title =~ /(android)/i }
   end
 
   def self.ios
-  	Topickey.all.find_all { |t| t.title =~ /(iphone|ios|ipad|mac)/i }
+  	all.find_all { |t| t.title =~ /(iphone|ios|ipad|mac)/i }
   end
 
+  def self.blackberry
+    all.find_all { |t| t.title =~ /(blackberry)/i }
+  end
+
+  def self.windows
+    all.find_all { |t| t.title =~ /\b(win|windows)\b/i }
+
+  end
   def self.import
     a=Member.summarize
     a.map{|k,v| Topickey.create(:topic_id=>k.map{|c,n| c}[0],:title=>k.map{|c,n| n}[0],:freq=>v)}

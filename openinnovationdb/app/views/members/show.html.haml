@@ -5,7 +5,7 @@
   = @member.lon
 %p
   %b Link:
-  = @member.link
+  = link_to @member.link,@member.link
 %p
   %b Lang:
   = @member.lang
@@ -49,6 +49,13 @@
   %b Email:
   = @member.email
 
+%p
+  %b Other services:
+  - @member.other_services.each do |s|
+    - if s.name=="linkedin"
+      #{s.name}:#{link_to s.srv_id, s.srv_id}
+    - else
+      #{s.name}:#{s.srv_id}
 
 = link_to 'Edit', edit_member_path(@member)
 \|

@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @company.name
+%p
+  %b Website:
+  = @company.website
+%p
+  %b Place:
+  = @company.place
+%p
+  %b Founded at:
+  = @company.founded_at
+%p
+  %b Workforce:
+  = @company.fte
+%p
+  %b Game devel:
+  = @company.game_devel
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

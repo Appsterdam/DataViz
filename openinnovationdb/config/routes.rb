@@ -1,5 +1,7 @@
 Openinnovationdb::Application.routes.draw do
 
+  resources :companies
+
   mount Resque::Server.new, :at => "/resque"
   get "groups/index"
 

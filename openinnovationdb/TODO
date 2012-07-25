@@ -1,0 +1,44 @@
+###TODOs for next time
+
+- geolocation for Twitter, try to find how ppl are moving towards Amsterdam and Appsterdam
+- Visualize geolocation data
+- cross-link with LinkedIn
+- trying to prove that ppl are coming and they are not leaving.
+- identify influential (persons with high number of tweets etc) and find out how many tweets include geolocation information
+- person who came here, what events did he attend, what apps has he been involved in.
+- git members, find out where they belong and how do they connect together.
+- Appsterdan is the economic stimulant for the area.
+
+
+### TODOs for 20/7
+
+- Group topics in a more realted way (Iphone, Iphone-x, iphone-x-xx- as iphone) / DONE
+- Pictures of members / DONE
+- Events, man
+- Group members of Appsterdam based on their event attendance (eg. open space is mainly for designers, guru sessions for techies)
+- check clock gem
+- Use to_json Ruby method to filter the fields, rather than respond_to :json which returns all the fields / DONE
+- paginate on model level / DONE
+
+
+
+### Examples
+
+## The OO Way
+
+Bad:
+
+    member = Member.first
+    Member.membertopictitles(member).each { |name| puts name }
+    Member.all.map do |m|
+       Member.membertopictitles(member)
+    end.flatten.uniq
+
+Good:
+
+    Member.first.topic_titles.each { |name| puts name }
+    Member.all.map(&:topic_titles).flatten.uniq
+
+   ...or:
+
+    Member.first.topics.titles.each { |name| puts name }

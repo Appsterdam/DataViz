@@ -31,7 +31,7 @@ class Topictag
 	end
 
 	def union_topickeys
-		Topickey.all.find_all{|k| k.title=~/(#{self.tag})/i}
+		Topickey.all.find_all{|k| k.title=~/(\b#{self.tag}\b)/i}
 	end
 
 end

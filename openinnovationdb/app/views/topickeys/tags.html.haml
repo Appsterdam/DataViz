@@ -15,5 +15,5 @@
         %td  
           = topictag.union_topickeys.map(&:title).join(" | ")
         %td
-          = topictag.freq
+          = topictag.union_topickeys.map(&:freq).sum
 .flickr_pagination= will_paginate @topictags
