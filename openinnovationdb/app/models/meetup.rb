@@ -118,4 +118,17 @@ class Meetup
     return http.header_str.match(/^(X-RateLimit-Remaining):(..?.?.?.?.?\s)$/)[2].to_i
   end
 
+  def self.associate_companies_members
+    Company.all.each do |company|
+      company.members << Member.all.find_all{ |b| b.bio=~/\b#{company.name}\b/i }
+    end
+  end
+  # replaced by Gituser#company_export
+  #def self.associate_companies_gitusers
+  #  Company.all.each do |company|
+  #    company.gitusers << Gituser.all.find_all{ |b| b.company=~/\b#{company.name}\b/i}
+  #  end
+  #end
+
+
 end

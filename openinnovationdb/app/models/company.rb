@@ -25,6 +25,9 @@ class Company
   field :type1,             :type => String
   field :type2,             :type => String
 
+  has_and_belongs_to_many :members
+  has_and_belongs_to_many :gitusers
+
   index :name, unique: true
 
   def self.import_from_xls
@@ -38,7 +41,12 @@ class Company
     iad.rows.each do |i|
       Company.create(i)
     end
+    # clean up
+    Company.where(:name => "-").first.destroy
+    Company.where(:name => nil).first.destroy
   end
+
+
 
 
 end

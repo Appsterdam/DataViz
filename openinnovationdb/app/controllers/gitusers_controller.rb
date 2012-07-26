@@ -1,6 +1,8 @@
 class GitusersController < ApplicationController
   # GET /gitusers
   # GET /gitusers.json
+
+
   def index
     @gitusers = Gituser.all
 

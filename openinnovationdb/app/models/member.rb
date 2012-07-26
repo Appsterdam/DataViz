@@ -41,6 +41,8 @@ class Member
   index :meetup_id, unique: true
 
   has_and_belongs_to_many :groups
+  has_and_belongs_to_many :companies
+  has_and_belongs_to_many :gitusers
 
   def topics_titles
     topics.map(&:name)
@@ -119,6 +121,8 @@ class Member
   def self.async_relation
     Resque.enqueue(MemberImportGroups)
   end
+
+
 end
 
 class Topic

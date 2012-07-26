@@ -45,4 +45,18 @@ class MeetupsController < ApplicationController
     redirect_to import_path
   end
 
+  def import_companies
+    Company.import_from_xls
+    Meetup.associate_companies_members
+    flash[:notice] = "Data imported"
+    redirect_to import_path
+  end
+
+  def import_gitusers
+    Gituser.import_from_file
+    Gituser.all.each{ |gituser| gituser.export_company }
+    flash[:notice] = "Data imported"
+    redirect_to import_path
+  end
+
 end

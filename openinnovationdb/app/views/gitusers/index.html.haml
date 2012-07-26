@@ -23,15 +23,15 @@
       %td= gituser.username
       %td= gituser.name
       %td= gituser.language
-      %td= gituser.url
+      %td= link_to gituser.url,gituser.url
       %td= gituser.member_since
       %td= gituser.repos
       %td= gituser.email
       %td= gituser.followers
       %td= gituser.location
-      %td= gituser.personal_url
+      %td= link_to gituser.personal_url,gituser.personal_url
       %td= gituser.company
-      %td= gituser.projects
+      %td= gituser.projects.map{ |project| link_to project['project_name'],project['project_url'] }.join(' | ').html_safe
       %td= link_to 'Show', gituser
       %td= link_to 'Edit', edit_gituser_path(gituser)
       %td= link_to 'Destroy', gituser, :confirm => 'Are you sure?', :method => :delete

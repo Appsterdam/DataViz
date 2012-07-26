@@ -18,6 +18,9 @@
 %p
   %b Game devel:
   = @company.game_devel
+%p
+  %b Related members:
+  = @company.members.map{|member| link_to(member.name,member_path(member))}.join(" | ").html_safe
 
 = link_to 'Edit', edit_company_path(@company)
 \|

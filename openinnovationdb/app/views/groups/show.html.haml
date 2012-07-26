@@ -11,7 +11,7 @@
   = todate(@group.created)
 %p
   %b Description:
-  = @group.description
+  = @group.description.html_safe
 %p
   %b Group_photo:
   = image_tag(@group.group_photo['thumb_link'])

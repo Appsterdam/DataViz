@@ -22,6 +22,8 @@ Openinnovationdb::Application.routes.draw do
   match '/import/topics/dropdb' => 'topickeys#dropdb'
   match '/import/groups'=>'meetups#import_groups'
   match '/import/groups/dropdb' => 'meetups#drop_groupdb'
+  match '/import/gitusers' => 'meetups#import_gitusers'
+  match '/import/companies' => 'meetups#import_companies'
   match '/topics' => 'topickeys#index'
   match '/topics/filtered' => 'topickeys#filtered'
   match '/topics/tags' => 'topickeys#tags'

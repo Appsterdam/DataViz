@@ -17,3 +17,11 @@
 
   %p= link_to("Import again",import_groups_path,:confirm=>"Last check")
   %p= link_to("Drop DB",import_groups_dropdb_path,:confirm => 'Are you sure?')
+
+.groups
+  %p There are currently #{Gituser.count} Github users in the DB
+  %p= link_to("Import again",import_gitusers_path,:confirm=>"Last check")
+
+.groups
+  %p There are currently #{Company.count} companies registered in the DB
+  %p= link_to("Import again",import_companies_path,:confirm=>"Last check")

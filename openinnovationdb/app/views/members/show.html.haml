@@ -28,6 +28,9 @@
   %b Bio:
   = @member.bio
 %p
+  %b Related companies:
+  = @member.companies.map{|company| link_to(company.name,company_path(company))}.join(" | ").html_safe
+%p
   %b Topics:
   = @member.topics_titles.join(", ")
 %p
@@ -53,9 +56,9 @@
   %b Other services:
   - @member.other_services.each do |s|
     - if s.name=="linkedin"
-      #{s.name}:#{link_to s.srv_id, s.srv_id}
+      #{s.name}:#{link_to(s.srv_id, s.srv_id)+" | "}
     - else
-      #{s.name}:#{s.srv_id}
+      #{s.name}:#{s.srv_id+" | "}
 
 = link_to 'Edit', edit_member_path(@member)
 \|
