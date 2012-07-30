@@ -1,4 +1,4 @@
-class associateCompaniesMembers
+class AssociateCompaniesMembers
   @queue=:member
 
   def self.perform
@@ -133,7 +133,7 @@ class Meetup
   end
 
   def self.associate_companies_members
-    Resque.enqueue(associateCompaniesMembers)
+    Resque.enqueue(AssociateCompaniesMembers)
   end
   # replaced by Gituser#company_export
   #def self.associate_companies_gitusers
