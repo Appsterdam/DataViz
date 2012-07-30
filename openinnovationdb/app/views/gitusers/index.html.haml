@@ -1,5 +1,5 @@
 %h1 Listing gitusers
-
+.flickr_pagination= will_paginate @companies
 %table
   %tr
     %th Username
@@ -37,5 +37,5 @@
       %td= link_to 'Destroy', gituser, :confirm => 'Are you sure?', :method => :delete
 
 %br
-
+.flickr_pagination= will_paginate @companies
 = link_to 'New Gituser', new_gituser_path

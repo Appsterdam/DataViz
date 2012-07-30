@@ -15,7 +15,7 @@
   - @companies.each do |company|
     %tr
       %td= company.name
-      %td.website= link_to "Website",(company.website.scan(/^http:\/\//) ? "http://#{company.website}" : company.website) unless company.website.nil?
+      %td.website= link_to "Website", (company.website.scan(/^http/) ? "http://#{company.website}" : company.website) unless company.website.nil?
       %td= company.place
       %td= company.founded_at
       %td= company.fte

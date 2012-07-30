@@ -4,7 +4,7 @@ class GitusersController < ApplicationController
 
 
   def index
-    @gitusers = Gituser.all
+    @gitusers = Gituser.order_by([:name,:asc]).paginate(:page=>params[:page],:per_page=>25)
 
     respond_to do |format|
       format.html # index.html.erb

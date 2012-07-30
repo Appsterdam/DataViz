@@ -47,8 +47,13 @@ class MeetupsController < ApplicationController
 
   def import_companies
     Company.import_from_xls
-    Meetup.associate_companies_members
     flash[:notice] = "Data imported"
+    redirect_to import_path
+  end
+
+  def associate_companies
+    Meetup.associate_companies_members
+    flash[:notice] = "Association algorith started"
     redirect_to import_path
   end
 

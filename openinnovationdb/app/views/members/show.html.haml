@@ -58,7 +58,7 @@
     - if s.name=="linkedin"
       #{s.name}:#{link_to(s.srv_id, s.srv_id)+" | "}
     - else
-      #{s.name}:#{s.srv_id+" | "}
+      #{s.name}:#{s.srv_id.to_s+" | "}
 
 = link_to 'Edit', edit_member_path(@member)
 \|
