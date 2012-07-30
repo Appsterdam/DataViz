@@ -1,3 +1,11 @@
+class associateCompaniesMembers
+  @queue=:member
+
+  def self.perform
+    Meetup.associate_companies_with_members
+  end
+end
+
 class Meetup
   include Mongoid::Document
 
@@ -118,10 +126,14 @@ class Meetup
     return http.header_str.match(/^(X-RateLimit-Remaining):(..?.?.?.?.?\s)$/)[2].to_i
   end
 
-  def self.associate_companies_members
+  def self.associate_companies_with_members
     Company.all.each do |company|
       company.members << Member.all.find_all{ |b| b.bio=~/\b#{company.name}\b/i }
     end
+  end
+
+  def self.associate_companies_members
+    Resque.enqueue(associateCompaniesMembers)
   end
   # replaced by Gituser#company_export
   #def self.associate_companies_gitusers
