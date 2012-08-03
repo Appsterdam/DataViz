@@ -26,3 +26,7 @@
   %p There are currently #{Company.count} companies registered in the DB
   %p= link_to("Import again",import_companies_path,:confirm=>"Last check")
   %p= link_to("Build associations", import_associations_path,:confirm=>"Prepare to wait")
+
+.groups
+  %p There are currently companies collected from LinkedIn for #{Lnkdin.count} members.
+  %p= link_to("Build again", import_linkedin_path, :confirm => "Last check")

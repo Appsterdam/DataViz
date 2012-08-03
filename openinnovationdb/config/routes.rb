@@ -1,5 +1,7 @@
 Openinnovationdb::Application.routes.draw do
 
+  resources :lnkdins
+
   resources :gitusers
 
   resources :companies
@@ -25,6 +27,7 @@ Openinnovationdb::Application.routes.draw do
   match '/import/gitusers' => 'meetups#import_gitusers'
   match '/import/companies' => 'meetups#import_companies'
   match '/import/associations' => 'meetups#associate_companies'
+  match '/import/linkedin' => 'meetups#build_linkedin_companies'
   match '/topics' => 'topickeys#index'
   match '/topics/filtered' => 'topickeys#filtered'
   match '/topics/tags' => 'topickeys#tags'

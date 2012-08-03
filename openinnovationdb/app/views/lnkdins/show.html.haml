@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Positions:
+  = @lnkdin.positions
+%p
+  %b First name:
+  = @lnkdin.first_name
+%p
+  %b Last name:
+  = @lnkdin.last_name
+
+= link_to 'Edit', edit_lnkdin_path(@lnkdin)
+\|
+= link_to 'Back', lnkdins_path

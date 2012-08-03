@@ -64,4 +64,10 @@ class MeetupsController < ApplicationController
     redirect_to import_path
   end
 
+  def build_linkedin_companies
+    Member.async_scrape_linkedin
+    flash[:notice] = "Association algorith started"
+    redirect_to import_path
+  end
+
 end

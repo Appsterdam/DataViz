@@ -14,6 +14,14 @@ class MemberImportGroups
   end
 end
 
+class BuildLinkedin
+  @queue=:group
+
+  def self.perform
+    Member.all.each{|i| i.build_linkedin}
+  end
+end
+
 class Member
   include Mongoid::Document
   include Mongoid::MapReduce
@@ -43,6 +51,7 @@ class Member
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :companies
   has_and_belongs_to_many :gitusers
+  has_one :lnkdin
 
   def topics_titles
     topics.map(&:name)
@@ -122,7 +131,36 @@ class Member
     Resque.enqueue(MemberImportGroups)
   end
 
+  def linkedin_companies
+    begin
+    unless self.other_services.where(:name=>"linkedin").first.nil?
+      client = LinkedIn::Client.new('8timx3cot78n', 'Thc6nYWw0rR5CsWD')
+      client.authorize_from_access("b3ec14b7-3ef5-4a77-afc4-21abdb980ae7","71360793-59c5-4d5c-8721-0c89e6be84cb")
+      client.profile(:url=>self.other_services.where(:name=>"linkedin").first.srv_id, :fields => %w(positions)).positions.all
+    end
+    rescue
+    return "Linkedin details not correct!"
+    end
 
+  end
+
+  def build_linkedin
+    m=Lnkdin.new
+    m.user_meetup_id = self.meetup_id
+    m.member = self
+    m.positions = self.linkedin_companies
+    m.save
+  end
+
+  def poses
+    unless self.lnkdin.positions == nil || self.lnkdin.positions == "Linkedin details not correct!"
+      self.lnkdin.positions.map{ |k| k['company']['name'] }
+    end
+  end
+
+  def self.async_scrape_linkedin
+    Resque.enqueue(BuildLinkedin)
+  end
 end
 
 class Topic
