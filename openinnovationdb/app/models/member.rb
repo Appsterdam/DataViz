@@ -158,6 +158,21 @@ class Member
     end
   end
 
+  [:twitter,:linkedin,:facebook,:flickr].each do |f|
+    define_method f do
+      if other_services.where(:name=>f.to_s).first.nil?
+        return []
+      else
+        other_services.where(:name=>f.to_s).first.srv_id
+
+      end
+
+    end
+  end
+
+
+
+
   def self.async_scrape_linkedin
     Resque.enqueue(BuildLinkedin)
   end

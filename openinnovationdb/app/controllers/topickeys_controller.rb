@@ -32,7 +32,7 @@ class TopickeysController < ApplicationController
 
   def statistics
   	@topickeys=Topickey.order_by([:freq, :desc]).limit(20)
-  	@topictags=Topictag.order_by([:freq, :desc]).limit(20)
+  	@topictags=Topictag.order_by([:freq, :desc]).limit(60)
   end
   
   def import

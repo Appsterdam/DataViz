@@ -115,7 +115,7 @@
                 series: [
                     <% @topictags.each do |i|%>
                     {name:'<%=i.tag%>',
-                     data:[<%=i.freq%>]},
+                     data:[<%=i.union_topickeys.map(&:freq).sum%>]},
                         <%end%>
                       ]
             });
@@ -124,5 +124,5 @@
     });
 </script>
 <%= render :partial=>'nav' %>
-<div id="container_tags" style="min-width: 400px; height: 500px; margin: 0 auto"></div>
+<div id="container_tags" style="min-width: 400px; height: 1500px; margin: 0 auto"></div>
 <div id="container_keys" style="min-width: 400px; height: 400px; margin: 30px auto"></div>

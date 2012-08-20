@@ -1,3 +1,17 @@
+### TODO
+
+- change Topics to Interests
+- implement to CSV
+- connect members to linkedin
+- remove words that are not usefull
+- check the sums in the graphs
+- groups: how many total members each group has and howmany of these are Appsterdamers and be able to sort them...
+- put the company data on the frond end, for the time being is only showing very little AND clean the duplicates.
+   - make sure all info AIM has sent in the DB and add the source (e.g make a new field with AIM:boolean)
+- connect Github members with Appsterdamers
+- CORRECT the name function...
+
+
 ###TODOs for next time
 
 - geolocation for Twitter, try to find how ppl are moving towards Amsterdam and Appsterdam
