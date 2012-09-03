@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+.content {
+  background-color: #eee;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+
+.photo{
+  position:relative;
+  width:100px;
+  height:100px;
+  float:left;
+}
+
+.name {
+  position: relative;
+  float:right;
+  height:100px;
+}
+
+.container {
+  padding-left: 20px;
+  position: relative;
+  float:left;
+}
+.flickr_pagination {
+  text-align: left;
+  padding: 0.3em;
+  cursor: default;
+  a, span, em {
+    padding: 0.2em 0.5em; }
+  .disabled {
+    color: #aaaaaa; }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    color: green;
+    font-size: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    text-align: center;
+    padding-right:0.2em;}
+  a {
+    border: 1px solid #dddddd;
+    color: #0063dc;
+    text-decoration: none;
+    &:hover, &:focus {
+      border-color: #003366;
+      background: #0063dc;
+      color: white;
+      text-decoration: none; } }
+  .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .previous_page, .next_page {
+    border-width: 2px; }
+  .previous_page {
+    margin-right: 1em; }
+  .next_page {
+    margin-left: 1em; } }

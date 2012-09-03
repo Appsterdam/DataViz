@@ -1,0 +1,61 @@
+%h3 Local Database
+%p
+  %h4= "Status: Updated" if @member_count == Member.count
+  %h4= "Status: #{link_to("needs Update",root_path)}".html_safe if @member_count != Member.count
+%h4 We have still #{@remaining} calls to the MeetupAPI until #{Time.now.hour+1}:00
+%h5 DB Statistics
+%table
+  %thead
+    %tr
+      %td Model
+      %td.vol Volume
+      %td.comments Comments
+  %tbody
+    %tr
+      %td Meetup App'ers
+      %td.vol= @member_count
+      %td.comments Members currently registered at Appsterdam Meetup group
+    %tr
+      %td Members
+      %td.vol= Member.count
+      %td.comments All Appsterdamers - Target
+    %tr
+      %td MeetupMember
+      %td.vol= MeetupMember.count
+      %td.comments Appsterdamers - proxy model
+    %tr
+      %td MeetupGroup*
+      %td.vol= MeetupGroup.count
+      %td.comments Groups App'ers belong to - Proxy model
+    %tr
+      %td Group
+      %td.vol= Group.count
+      %td.comments Groups associated with Member
+    %tr
+      %td Topickey
+      %td.vol= Topickey.count
+      %td.comments Interests and their frequency
+    %tr
+      %td Topictag
+      %td.vol= Topictag.count
+      %td.comments Words used in the Topic description
+    %tr
+      %td Company
+      %td.col= Company.count
+      %td.comments Companies imported from AIM
+    %tr
+      %td Git Users
+      %td.vol= Gituser.count
+      %td.comments Git users in Amsterdam area as retrieved by the Python script
+    %tr
+      %td Tweets by Appsterdamers
+      %td.vol= Stream.count
+      %td.comments Real-Time tweets by monitoring of App'ers at Tweeter
+    %tr
+      %td App'ers with Tweeter
+      %td.vol= TweeterId.count
+      %td.comments App'ers who are being monitored
+  %tfoot
+    %tr
+      %td{:style=>"font-size:10px; "} *This number will always appear less as some Meetupers do not allow access to their Group info.
+

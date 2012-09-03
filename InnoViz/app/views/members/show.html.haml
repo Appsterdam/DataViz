@@ -1,0 +1,63 @@
+%p#notice= notice
+
+- unless @member.photo.nil?
+  %p.photo
+    = image_tag(@member.photo['thumb_link'])
+%p.name
+  %h2= @member.name
+%br
+.container
+  %p
+    %b Lon:
+    = @member.lon
+  %p
+    %b Link:
+    = link_to @member.link,@member.link
+  %p
+    %b Lang:
+    = @member.lang
+  %p
+    %b City:
+    = @member.city
+  %p
+    %b Country:
+    = @member.country
+  %p
+    %b Visited:
+    = @member.visited
+  %p
+    %b Meetup:
+    = @member.meetup_id
+  %p
+    %b Joined:
+    = @member.joined
+  %p
+    %b Bio:
+    = @member.bio
+  %p
+    %b Possible GitHub associations based on Member#name:
+    - unless @member.gitusers.nil?
+      = @member.gitusers.map{|git| link_to(git.username,gituser_path(git))}.join(' | ').html_safe
+  %p
+    %b Associated/Reffered companies:
+    - unless @member.companies.nil?
+      = @member.companies.map{|cmp| link_to(cmp.name,company_path(cmp))}.join(' | ').html_safe
+  %p
+    %b Topics:
+    = @member.topics.map(&:name).join(" | ")
+  %p
+    %b Groups:
+    = @member.groups.map{|k| link_to(k.name,group_path(k))}.join(" | ").html_safe
+  %p
+    %b Lat:
+    = @member.lat
+  %p
+    %b State:
+    = @member.state
+  %p
+    %b Email:
+    = @member.email
+
+  = link_to 'Edit', edit_member_path(@member)
+  \|
+  = link_to 'Back', members_path

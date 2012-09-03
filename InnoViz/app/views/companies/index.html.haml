@@ -1,0 +1,65 @@
+%h1 Listing companies
+= paginate @companies
+%table
+  %tr
+    %th Name
+    %th Website
+    %th Place
+    -#%th Founded at
+    -#%th Fte
+    -#%th Game devel
+    %th First name owner
+    -#%th Salutation
+    %th Email address
+    -#%th Telephone number
+    -#%th Function
+    -#%th Street
+    -#%th Postcode
+    -#%th Year2007
+    -#%th Year2008
+    -#%th Year2009
+    -#%th Console
+    -#%th Pc
+    -#%th Adventure
+    -#%th Serious
+    -#%th Simulation
+    -#%th Web
+    -#%th Type1
+    -#%th Type2
+    %th
+    -#%th
+    -#%th
+
+  - @companies.each do |company|
+    %tr
+      %td= company.name
+      %td= link_to "GO",company.website
+      %td= company.place
+      -#%td= company.founded_at
+      -#%td= company.fte
+      -#%td= company.game_devel
+      %td= company.first_name_owner
+      -#%td= company.salutation
+      %td= company.email_address
+      -#%td= company.telephone_number
+      -#%td= company.function
+      -#%td= company.street
+      -#%td= company.postcode
+      -#%td= company.year2007
+      -#%td= company.year2008
+      -#%td= company.year2009
+      -#%td= company.console
+      -#%td= company.pc
+      -#%td= company.adventure
+      -#%td= company.serious
+      -#%td= company.simulation
+      -#%td= company.web
+      -#%td= company.type1
+      -#%td= company.type2
+      %td= link_to 'Show', company
+      -#%td= link_to 'Edit', edit_company_path(company)
+      -#%td= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete
+
+%br
+= paginate @companies
+= link_to 'New Company', new_company_path

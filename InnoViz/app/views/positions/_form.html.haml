@@ -1,0 +1,14 @@
+= simple_form_for(@position) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :company
+    = f.input :cmp_id
+    = f.input :is_current
+    = f.input :start_date
+    = f.input :end_date
+    = f.input :title
+    = f.input :summary
+
+  .form-actions
+    = f.button :submit

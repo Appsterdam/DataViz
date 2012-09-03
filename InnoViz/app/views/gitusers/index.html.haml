@@ -1,0 +1,41 @@
+%h1 Listing gitusers
+
+%table
+  %tr
+    %th Username
+    %th Name
+    %th Language
+    %th GithubUrl
+    -#%th Member since
+    %th Repos
+    %th Email
+    -#%th Followers
+    -#%th Location
+    %th PersonalUrl
+    %th Company
+    %th Project volume
+    %th
+    -#%th
+    -#%th
+
+  - @gitusers.each do |gituser|
+    %tr
+      %td= gituser.username
+      %td= gituser.name
+      %td= gituser.language
+      %td= link_to "GO",gituser.url
+      -#%td= gituser.member_since
+      %td= gituser.repos
+      %td= gituser.email
+      -#%td= gituser.followers
+      -#%td= gituser.location
+      %td= link_to "Personal page",gituser.personal_url
+      %td= gituser.company
+      %td= gituser.projects.count
+      %td= link_to 'Show', gituser
+      -#%td= link_to 'Edit', edit_gituser_path(gituser)
+      -#%td= link_to 'Destroy', gituser, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Gituser', new_gituser_path

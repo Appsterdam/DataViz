@@ -1,0 +1,64 @@
+%p#notice= notice
+
+%p.photo
+
+  = image_tag @group.group_photo['thumb_link'] unless @group.group_photo.nil?
+%p.name
+
+  %h2= @group.name
+%br
+.container
+  %p
+    %b City:
+    = @group.city
+  %p
+    %b Country:
+    = @group.country
+  %p
+    %b Created:
+    = todate(@group.created)
+  - unless @group.description.nil?
+    %p
+      %b Description:
+      = @group.description.html_safe
+  %p
+    %b Join mode:
+    = @group.join_mode
+  %p
+    %b Lat:
+    = @group.lat
+  %p
+    %b Link:
+    = @group.link
+  %p
+    %b Lon:
+    = @group.lon
+  %p
+    %b Organizer:
+    = link_to @group.organizer['name'],member_path(Member.where(:meetup_id=>@group.organizer['member_id']).first) if Member.where(:meetup_id=>@group.organizer['member_id']).exists?
+    = link_to(@group.organizer['name'],"http://www.meetup.com/members/#{@group.organizer['member_id']}")+ " (Organizer is not an Appsterdamer)" unless Member.where(:meetup_id=>@group.organizer['member_id']).exists?
+  %p
+    %b Rating:
+    = @group.rating
+  %p
+    %b State:
+    = @group.state
+  %p
+    %b Topics:
+    = @group.topics.map{|t| t['name']}.join" | "
+  %p
+    %b Urlname:
+    = @group.urlname
+  %p
+    %b Visibility:
+    = @group.visibility
+  %p
+    %b Who:
+    = @group.who
+  %p
+    %b Appsterdamers:
+    = @group.members.map{|mmbr| link_to(mmbr.name,member_path(mmbr))}.join(" | ").html_safe
+
+  = link_to 'Edit', edit_group_path(@group)
+  \|
+  = link_to 'Back', groups_path

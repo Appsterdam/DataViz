@@ -1,0 +1,55 @@
+%h1 Listing groups
+= paginate @groups
+%table
+  %tr
+    %th City
+    %th Country
+    -#%th Created
+    -#%th Description
+    -#%th Group photo
+    %th Join mode
+    -#%th Lat
+    %th Link
+    -#%th Lon
+    %th Name
+    %th Members
+    %th App'ers
+    -#%th Organizer
+    %th Rating
+    -#%th State
+    -#%th Topics
+    -#%th Urlname
+    %th Visibility
+    %th Who
+    %th
+    -#%th
+    -#%th
+
+  - @groups.each do |group|
+    %tr
+      %td= group.city
+      %td= group.country
+      -#%td= group.created
+      -#%td= group.description
+      -#%td= group.group_photo
+      %td= group.join_mode
+      -#%td= group.lat
+      %td= link_to "Visit",group.link
+      -#%td= group.lon
+      %td= group.name
+      %td= group.member_vol
+      %td= group.members.count
+      -#%td= group.organizer
+      %td= group.rating
+      -#%td= group.state
+      -#%td= group.topics
+      -#%td= group.urlname
+      %td= group.visibility
+      %td= group.who
+      %td= link_to 'Show', group
+      -#%td= link_to 'Edit', edit_group_path(group)
+      -#%td= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete
+
+%br
+= paginate @groups
+= link_to 'New Group', new_group_path

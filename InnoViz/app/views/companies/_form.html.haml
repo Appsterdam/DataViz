@@ -1,0 +1,31 @@
+= simple_form_for(@company) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :website
+    = f.input :place
+    = f.input :founded_at
+    = f.input :fte
+    = f.input :game_devel
+    = f.input :first_name_owner
+    = f.input :salutation
+    = f.input :email_address
+    = f.input :telephone_number
+    = f.input :function
+    = f.input :street
+    = f.input :postcode
+    = f.input :year2007
+    = f.input :year2008
+    = f.input :year2009
+    = f.input :console
+    = f.input :pc
+    = f.input :adventure
+    = f.input :serious
+    = f.input :simulation
+    = f.input :web
+    = f.input :type1
+    = f.input :type2
+
+  .form-actions
+    = f.button :submit

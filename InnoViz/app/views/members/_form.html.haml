@@ -1,0 +1,21 @@
+= simple_form_for(@member) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :lon
+    = f.input :link
+    = f.input :lang
+    = f.input :city
+    = f.input :country
+    = f.input :visited
+    = f.input :meetup_id
+    = f.input :joined
+    = f.input :bio
+    = f.input :photo
+    = f.input :name
+    = f.input :lat
+    = f.input :state
+    = f.input :email
+
+  .form-actions
+    = f.button :submit

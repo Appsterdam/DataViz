@@ -1,0 +1,19 @@
+= simple_form_for(@gituser) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :username
+    = f.input :name
+    = f.input :language
+    = f.input :url
+    = f.input :member_since
+    = f.input :repos
+    = f.input :email
+    = f.input :followers
+    = f.input :location
+    = f.input :personal_url
+    = f.input :company
+    = f.input :projects
+
+  .form-actions
+    = f.button :submit

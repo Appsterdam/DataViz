@@ -1,0 +1,21 @@
+// Place all the styles related to the Members controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.photo{
+  position:relative;
+  width:100px;
+  height:100px;
+  float:left;
+}
+
+.name {
+  position: relative;
+  float:right;
+  height:100px;
+}
+
+.container {
+  padding-left: 20px;
+  position: relative;
+  float:left;
+}

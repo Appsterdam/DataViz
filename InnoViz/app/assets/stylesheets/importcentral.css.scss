@@ -1,0 +1,27 @@
+// Place all the styles related to the importcentral controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+td.comments {
+  position: relative;
+  margin-left:5px;
+  padding-left:5px;
+  border-left: solid 1px black;
+}
+
+thead {
+  border-bottom: solid 2px black;
+}
+
+tfoot {
+  border-top: solid 2px black;
+  tr {
+    border-bottom: none;
+  }
+}
+
+tbody {
+  tr {
+    border-bottom: 1px solid black;
+  }
+}

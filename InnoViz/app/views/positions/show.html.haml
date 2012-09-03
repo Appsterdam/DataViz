@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @position.company
+%p
+  %b Cmp:
+  = @position.cmp_id
+%p
+  %b Is current:
+  = @position.is_current
+%p
+  %b Start date:
+  = @position.start_date
+%p
+  %b End date:
+  = @position.end_date
+%p
+  %b Title:
+  = @position.title
+%p
+  %b Summary:
+  = @position.summary
+
+= link_to 'Edit', edit_position_path(@position)
+\|
+= link_to 'Back', positions_path

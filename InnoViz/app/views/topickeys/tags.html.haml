@@ -1,0 +1,19 @@
+= render :partial => 'nav'
+%h3 Tags: Word analysis on Interests
+-#.flickr_pagination= will_paginate @topictags
+%table
+  %thead
+    %tr
+      %th Tag
+      %th Topics
+      %th Frequency
+  %tbody
+    - @topictags.each do |topictag|
+      %tr
+        %td
+          = topictag.tag
+        %td  
+          = topictag.union_topickeys.map(&:name).join(" | ")
+        %td
+          = topictag.freq
+-#.flickr_pagination= will_paginate @topictags

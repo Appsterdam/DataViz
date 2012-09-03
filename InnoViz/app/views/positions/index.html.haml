@@ -1,0 +1,31 @@
+%h1 Listing positions
+
+%table
+  %tr
+    %th Company
+    %th Cmp
+    %th Is current
+    %th Start date
+    %th End date
+    %th Title
+    %th Summary
+    %th
+    %th
+    %th
+
+  - @positions.each do |position|
+    %tr
+      %td= position.company
+      %td= position.cmp_id
+      %td= position.is_current
+      %td= position.start_date
+      %td= position.end_date
+      %td= position.title
+      %td= position.summary
+      %td= link_to 'Show', position
+      %td= link_to 'Edit', edit_position_path(position)
+      %td= link_to 'Destroy', position, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Position', new_position_path

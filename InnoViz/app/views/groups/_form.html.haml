@@ -1,0 +1,24 @@
+= simple_form_for(@group) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :city
+    = f.input :country
+    = f.input :created
+    = f.input :description
+    = f.input :group_photo
+    = f.input :join_mode
+    = f.input :lat
+    = f.input :link
+    = f.input :lon
+    = f.input :name
+    = f.input :organizer
+    = f.input :rating
+    = f.input :state
+    = f.input :topics
+    = f.input :urlname
+    = f.input :visibility
+    = f.input :who
+
+  .form-actions
+    = f.button :submit

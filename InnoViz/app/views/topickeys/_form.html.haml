@@ -1,0 +1,11 @@
+= simple_form_for(@topickey) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :topic_id
+    = f.input :urlkey
+    = f.input :name
+    = f.input :freq
+
+  .form-actions
+    = f.button :submit

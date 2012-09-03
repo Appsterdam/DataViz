@@ -1,0 +1,45 @@
+%h1 Listing members
+= paginate @members
+%table
+  %tr
+    -#%th Lon
+    -#%th Link
+    -#%th Lang
+    -#%th City
+    %th Country
+    -#%th Visited
+    -#%th Meetup
+    -#%th Joined
+    %th Bio
+    %th Photo
+    %th Name
+    -#%th Lat
+    -#%th State
+    -#%th Email
+    %th
+    %th
+    %th
+
+  - @members.each do |member|
+    %tr
+      -#%td= member.lon
+      -#%td= member.link
+      -#%td= member.lang
+      -#%td= member.city
+      %td= member.country
+      -#%td= member.visited
+      -#%td= member.meetup_id
+      -#%td= member.joined
+      %td= member.bio
+      %td= member.photo.nil? ? "None" : image_tag(member.photo['thumb_link'])
+      %td= link_to member.name,member.link
+      -#%td= member.lat
+      -#%td= member.state
+      -#%td= member.email
+      %td= link_to 'Show', member
+      %td= link_to 'Edit', edit_member_path(member)
+      %td= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete
+
+%br
+= paginate @members
+= link_to 'New Member', new_member_path

@@ -1,0 +1,22 @@
+= link_to "Innoviz", importer_path, :class => 'brand'
+%ul.nav
+  %li
+    = link_to "Resque Q",'/resque',:target => "_blank"
+  %li
+    = link_to "Members",members_path
+  %li
+    = link_to "Groups",groups_path
+  %li
+    = link_to "Interests",topickeys_path
+  %li
+    = link_to "Companies",companies_path
+  %li
+    = link_to "Git Users",gitusers_path
+  - if user_signed_in?
+    %li
+      Logged in as #{current_user.name}
+    %li
+      = link_to 'Logout', signout_path
+  - else
+    %li
+      = link_to 'Login', signin_path

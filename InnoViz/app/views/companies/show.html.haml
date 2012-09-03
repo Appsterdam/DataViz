@@ -1,0 +1,78 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @company.name
+%p
+  %b Website:
+  = @company.website
+%p
+  %b Place:
+  = @company.place
+%p
+  %b Founded at:
+  = @company.founded_at
+%p
+  %b Fte:
+  = @company.fte
+%p
+  %b Game devel:
+  = @company.game_devel
+%p
+  %b First name owner:
+  = @company.first_name_owner
+%p
+  %b Salutation:
+  = @company.salutation
+%p
+  %b Email address:
+  = @company.email_address
+%p
+  %b Telephone number:
+  = @company.telephone_number
+%p
+  %b Function:
+  = @company.function
+%p
+  %b Street:
+  = @company.street
+%p
+  %b Postcode:
+  = @company.postcode
+%p
+  %b Year2007:
+  = @company.year2007
+%p
+  %b Year2008:
+  = @company.year2008
+%p
+  %b Year2009:
+  = @company.year2009
+%p
+  %b Console:
+  = @company.console
+%p
+  %b Pc:
+  = @company.pc
+%p
+  %b Adventure:
+  = @company.adventure
+%p
+  %b Serious:
+  = @company.serious
+%p
+  %b Simulation:
+  = @company.simulation
+%p
+  %b Web:
+  = @company.web
+%p
+  %b Type1:
+  = @company.type1
+%p
+  %b Type2:
+  = @company.type2
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

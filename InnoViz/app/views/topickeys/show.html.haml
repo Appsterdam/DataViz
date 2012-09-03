@@ -1,0 +1,21 @@
+%p#notice= notice
+%p
+  %b Interest:
+  = @topickey.topic_id
+%p
+  %b Urlkey:
+  = @topickey.urlkey
+%p
+  %b Name:
+  = @topickey.name
+%p
+  %b Freq:
+  = @topickey.freq
+
+%p
+  %h3 Members sharing this Interest:
+  = @members.map{|mmbr| link_to(mmbr.name,member_path(mmbr))}.join(" | ").html_safe
+
+= link_to 'Edit', edit_topickey_path(@topickey)
+\|
+= link_to 'Back', topickeys_path

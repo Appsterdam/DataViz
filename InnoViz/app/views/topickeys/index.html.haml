@@ -1,0 +1,26 @@
+= render :partial => 'nav'
+%h1 Listing Interests
+= paginate @topickeys
+%table
+  %tr
+    %th TopicID
+
+    %th Name
+    %th Member Volume
+    %th
+    -#%th
+    -#%th
+
+  - @topickeys.each do |topickey|
+    %tr
+      %td= topickey.topic_id
+
+      %td= topickey.name
+      %td= topickey.freq
+      %td= link_to 'Show', topickey
+      -#%td= link_to 'Edit', edit_topickey_path(topickey)
+      -#%td= link_to 'Destroy', topickey, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+-#= link_to 'New Topickey', new_topickey_path
