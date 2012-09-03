@@ -19,7 +19,7 @@ class TopickeysController < ApplicationController
   end
 
   def tags
-  	@topictags=Topictag.order_by([:freq,:desc]).paginate(:page=>params[:page],:per_page=>5)
+  	@topictags=Topictag.order_by([:freq,:desc]).limit(100).paginate(:page=>params[:page],:per_page=>5)
 
     respond_to do |format|
       format.html # index.html.erb
