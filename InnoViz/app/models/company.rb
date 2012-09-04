@@ -34,9 +34,11 @@ class Company
   field :web, type: Boolean
   field :type1, type: String
   field :type2, type: String
+  #field :src, type: String
 
   has_and_belongs_to_many :members
 
+  index({name: 1},{unique: true})
 
   def self.import_from_xls
     game_cmpns=BatchFactory.from_file("data/game_companies.xls")

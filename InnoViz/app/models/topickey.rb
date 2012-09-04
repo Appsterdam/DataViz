@@ -2,7 +2,7 @@ class ImportTopickeys
   @queue = :innoviz
 
   def self.perform
-    Topickey.async_import
+    Topickey.import_topics
   end
 end
 
@@ -12,6 +12,8 @@ class Topickey
   field :urlkey, type: String
   field :name, type: String
   field :freq, type: Integer
+
+  index({topic_id: 1},{unique: true})
 
   def self.import_topics
     a=Member.summarize_topics
