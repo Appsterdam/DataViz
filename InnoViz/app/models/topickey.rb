@@ -13,11 +13,11 @@ class Topickey
   field :name, type: String
   field :freq, type: Integer
 
-  index({topic_id: 1},{unique: true})
+  index({ topic_id: 1 }, { unique: true })
 
   def self.import_topics
     a=Member.summarize_topics
-    a.map{|k,v| Topickey.create(:topic_id=>k.map{|c,n| c}[0],:name=>k.map{|c,n| n}[0].unpack("C*").pack("U*"),:freq=>v)}
+    a.map { |k, v| Topickey.create(:topic_id => k.map { |c, n| c }[0], :name => k.map { |c, n| n }[0].unpack("C*").pack("U*"), :freq => v) }
   end
 
   def self.android

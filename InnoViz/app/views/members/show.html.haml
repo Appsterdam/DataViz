@@ -24,16 +24,20 @@
     = @member.country
   %p
     %b Visited:
-    = @member.visited
+    = todate(@member.visited)
   %p
     %b Meetup:
     = @member.meetup_id
   %p
     %b Joined:
-    = @member.joined
+    = todate(@member.joined)
   %p
     %b Bio:
     = @member.bio
+  %p
+    %b Positions based on Linkedin profile:
+    - unless @member.positions.empty?
+      = @member.positions.map(&:name).join(" | ")
   %p
     %b Possible GitHub associations based on Member#name:
     - unless @member.gitusers.nil?

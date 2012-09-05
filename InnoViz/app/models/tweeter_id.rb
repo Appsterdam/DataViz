@@ -15,18 +15,18 @@ class TweeterId
 
   belongs_to :member
 
-  index({memberid: 1},{unique: true})
+  index({ memberid: 1 }, { unique: true })
 
-   def self.no_id
-    current_member = Member.all.map{|k| k.meetup_id unless k.twitter.empty?}.compact
+  def self.no_id
+    current_member    = Member.all.map { |k| k.meetup_id unless k.twitter.empty? }.compact
     current_tweeterid = TweeterId.all.map(&:memberid)
     current_member - current_tweeterid
-   end
+  end
 
   def self.import
-     no_id.each do |mmbr|
-       Member.where(:meetup_id=>mmbr).first.retrieve_tweeter_id
-     end
+    no_id.each do |mmbr|
+      Member.where(:meetup_id => mmbr).first.retrieve_tweeter_id
+    end
   end
 
   def self.async_import

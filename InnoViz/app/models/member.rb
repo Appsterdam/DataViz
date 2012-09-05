@@ -136,8 +136,8 @@ class Member
 
     #client = LinkedIn::Client.new('8timx3cot78n', 'Thc6nYWw0rR5CsWD')
     #client.authorize_from_access("b3ec14b7-3ef5-4a77-afc4-21abdb980ae7", "71360793-59c5-4d5c-8721-0c89e6be84cb")
-    client = LinkedIn::Client.new('g7upruzb5i07', 'TYOwWEK3D58xdB98')
-    client.authorize_from_access("12762eb4-2f9c-4ee8-a3e1-2b799dc91b70", "3190c08b-744c-4b65-808f-5c448ddd3cde")
+    client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+    client.authorize_from_access(ENV['LINKEDIN_TOKEN'], ENV['LINKEDIN_SECRET_TOKEN'])
     begin
       poses = client.profile(:url => self.linkedin, :fields => %w(positions)).positions.all
       poses.each do |position|
@@ -155,7 +155,7 @@ class Member
   def retrieve_tweeter_id
     begin
       t            = TweeterId.new
-      t.memberid = self.meetup_id
+      t.memberid   = self.meetup_id
       t.srv_id     =self.twitter
       t.twitter_id = Twitter.user(self.twitter).id
       t.member     = self
